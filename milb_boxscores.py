@@ -56,30 +56,193 @@ BASE = "https://statsapi.mlb.com/api/v1"
 # 5442=Dominican Summer League
 SPORT_IDS = [1, 11, 12, 13, 14, 16, 5442]
 
-PLAYERS = [
-    {"name": "Yorger Bautista",   "org": "SEA", "level": "CPX",  "pos": "OF"},
-    {"name": "Eduardo Quintero",  "org": "LAD", "level": "A+",   "pos": "OF"},
-    {"name": "Jonny Farmelo",     "org": "SEA", "level": "AA",   "pos": "OF"},
-    {"name": "Tanner McDougal",   "org": "CHW", "level": "AAA",  "pos": "SP/RP"},
-    {"name": "Rainiel Rodriguez", "org": "STL", "level": "AA",   "pos": "C"},
-    {"name": "Mike Sirota",       "org": "LAD", "level": "AA",   "pos": "OF"},
-    {"name": "Jamie Arnold",      "org": "ATH", "level": "AA",   "pos": "SP"},
-    {"name": "Steele Hall",       "org": "CIN", "level": "CPX",  "pos": "SS"},
-    {"name": "Tyler Bremner",     "org": "LAA", "level": "A+",   "pos": "SP"},
-    {"name": "Luis Pena",         "org": "MIL", "level": "A+",   "pos": "2B/SS"},
-    {"name": "Hyeseong Kim",      "org": "LAD", "level": "AAA",  "pos": "2B/SS/OF"},
-    {"name": "Luis Gil",          "org": "NYY", "level": "MLB",  "pos": "SP"},
-]
+FANTASY_TEAMS = {
+    "Zebras": [
+        {"name": "Yorger Bautista",   "org": "SEA", "level": "CPX",  "pos": "OF"},
+        {"name": "Eduardo Quintero",  "org": "LAD", "level": "A+",   "pos": "OF"},
+        {"name": "Jonny Farmelo",     "org": "SEA", "level": "AA",   "pos": "OF"},
+        {"name": "Tanner McDougal",   "org": "CHW", "level": "AAA",  "pos": "SP/RP"},
+        {"name": "Rainiel Rodriguez", "org": "STL", "level": "AA",   "pos": "C"},
+        {"name": "Mike Sirota",       "org": "LAD", "level": "AA",   "pos": "OF"},
+        {"name": "Jamie Arnold",      "org": "ATH", "level": "AA",   "pos": "SP"},
+        {"name": "Steele Hall",       "org": "CIN", "level": "CPX",  "pos": "SS"},
+        {"name": "Tyler Bremner",     "org": "LAA", "level": "A+",   "pos": "SP"},
+        {"name": "Luis Pena",         "org": "MIL", "level": "A+",   "pos": "2B/SS"},
+        {"name": "Hyeseong Kim",      "org": "LAD", "level": "AAA",  "pos": "2B/SS/OF"},
+        {"name": "Luis Gil",          "org": "NYY", "level": "MLB",  "pos": "SP"},
+    ],
+
+    # Level ("TBD" below) is cosmetic only -- get_game_log() scans every
+    # MiLB/MLB level regardless of this field, so it doesn't affect data
+    # pulling, only the header text. Org/pos here were cross-referenced from
+    # draft-history tabs (most recent draft appearance per player, since org
+    # can change via trades); fill in real levels later if you want nicer
+    # display text.
+
+    "Ghost Ride the WHIP": [
+        {"name": "Kane Kepley",      "org": "CHC", "level": "TBD", "pos": "OF"},
+        {"name": "Kevin Defrank",    "org": "MIA", "level": "TBD", "pos": "P"},
+        {"name": "Jefferson Rojas",  "org": "CHC", "level": "TBD", "pos": "SS"},
+        {"name": "Jace LaViolette",  "org": "CLE", "level": "TBD", "pos": "OF"},
+        {"name": "Billy Carlson",    "org": "CHW", "level": "TBD", "pos": "SS"},
+        {"name": "Xavier Neyens",    "org": "HOU", "level": "TBD", "pos": "3B"},
+        {"name": "Ralphy Velazquez", "org": "CLE", "level": "TBD", "pos": "1B"},
+        {"name": "Aiva Arquette",    "org": "MIA", "level": "TBD", "pos": "SS"},
+        {"name": "Jaxon Wiggins",    "org": "CHC", "level": "TBD", "pos": "P"},
+    ],
+
+    "DC Outlaws": [
+        {"name": "Aidan Miller",              "org": "PHI", "level": "TBD", "pos": "3B"},
+        {"name": "Lazaro Montes",             "org": "SEA", "level": "TBD", "pos": "OF"},
+        {"name": "George Lombard Jr.",         "org": "NYY", "level": "TBD", "pos": "SS"},
+        {"name": "Ryan Sloan",                "org": "SEA", "level": "TBD", "pos": "P"},
+        {"name": "Josuar De Jesus Gonzalez",  "org": "SFG", "level": "TBD", "pos": "SS"},
+        {"name": "Theo Gillen",               "org": "TBR", "level": "TBD", "pos": "OF"},
+        {"name": "JoJo Parker",               "org": "TOR", "level": "TBD", "pos": "SS"},
+        {"name": "Brody Hopkins",             "org": "TBR", "level": "TBD", "pos": "P"},
+        {"name": "Tyson Lewis",               "org": "CIN", "level": "TBD", "pos": "SS"},
+        {"name": "Francisco Renteria",        "org": "PHI", "level": "TBD", "pos": "OF"},
+        {"name": "Kevin Alvarez",             "org": "HOU", "level": "TBD", "pos": "OF"},
+    ],
+
+    "BaseVOLS": [
+        {"name": "Marcus Phillips",   "org": "BOS", "level": "TBD", "pos": "P"},
+        {"name": "Drew Beam",         "org": "KCR", "level": "TBD", "pos": "P"},
+        {"name": "Drue Hackenberg",   "org": "ATL", "level": "TBD", "pos": "P"},
+        {"name": "Quinn Mathews",     "org": "STL", "level": "TBD", "pos": "P"},
+        {"name": "Ricky Tiedemann",   "org": "TOR", "level": "TBD", "pos": "P"},
+        {"name": "James Tibbs III",   "org": "SF",  "level": "TBD", "pos": "OF"},
+        {"name": "Seaver King",       "org": "WAS", "level": "TBD", "pos": "SS/OF"},
+        {"name": "Cam Caminiti",      "org": "ATL", "level": "TBD", "pos": "P"},
+        {"name": "Kendry Rojas",      "org": "MIN", "level": "TBD", "pos": "P"},
+        {"name": "Carlos LaGrange",   "org": "NYY", "level": "TBD", "pos": "P"},
+    ],
+
+    "Luck Dragons": [
+        {"name": "Braylon Payne",      "org": "MIL", "level": "TBD", "pos": "OF"},
+        {"name": "Ethan Conrad",       "org": "CHC", "level": "TBD", "pos": "OF"},
+        {"name": "Emmanuel Rodriguez", "org": "MIN", "level": "TBD", "pos": "OF"},
+        {"name": "Emil Morales",       "org": "LAD", "level": "TBD", "pos": "SS"},
+        {"name": "Josue Briceno",      "org": "DET", "level": "TBD", "pos": "1B"},
+        {"name": "Alfredo Duno",       "org": "CIN", "level": "TBD", "pos": "C"},
+        {"name": "Sebastian Walcott",  "org": "TEX", "level": "TBD", "pos": "SS"},
+        {"name": "Thomas White",       "org": "MIA", "level": "TBD", "pos": "P"},
+        {"name": "Luis Hernandez",     "org": "SFG", "level": "TBD", "pos": "SS"},
+        {"name": "Caden Scarborough",  "org": "TEX", "level": "TBD", "pos": "P"},
+        {"name": "Jarlin Susana",      "org": "WAS", "level": "TBD", "pos": "P"},
+    ],
+
+    "LawDog": [
+        {"name": "Gavin Kilen",         "org": "SFG", "level": "TBD", "pos": "SS"},
+        {"name": "Bryce Rainer",        "org": "DET", "level": "TBD", "pos": "SS"},
+        {"name": "Arjun Nimmala",       "org": "TOR", "level": "TBD", "pos": "SS"},
+        {"name": "Moises Chace",        "org": "PHI", "level": "TBD", "pos": "P"},
+        {"name": "Jeferson Quero",      "org": "MIL", "level": "TBD", "pos": "C"},
+        {"name": "Michael Arroyo",      "org": "SEA", "level": "TBD", "pos": "2B"},
+        {"name": "Jurrangelo Cijntje",  "org": "STL", "level": "TBD", "pos": "P"},
+        {"name": "Angel Genao",         "org": "CLE", "level": "TBD", "pos": "SS"},
+        {"name": "Ike Irish",           "org": "BAL", "level": "TBD", "pos": "1B/OF"},
+        {"name": "Ching-Hsien Ko",      "org": "LAD", "level": "TBD", "pos": "OF"},
+    ],
+
+    "Samsung Lions": [
+        {"name": "Aidan Smith",      "org": "TBR", "level": "TBD", "pos": "OF"},
+        {"name": "George Klassen",   "org": "LAA", "level": "TBD", "pos": "P"},
+        {"name": "Luis de Leon",     "org": "BAL", "level": "TBD", "pos": "P"},
+        {"name": "Luis Perales",     "org": "WAS", "level": "TBD", "pos": "P"},
+        {"name": "Elmer Rodriguez",  "org": "NYY", "level": "TBD", "pos": "P"},
+        {"name": "Bo Davidson",      "org": "SFG", "level": "TBD", "pos": "OF"},
+    ],
+
+    "Truffle Muts": [
+        {"name": "Jacob Reimer",       "org": "NYM", "level": "TBD", "pos": "3B"},
+        {"name": "Elian Pena",         "org": "NYM", "level": "TBD", "pos": "SS"},
+        {"name": "Josue De Paula",     "org": "LAD", "level": "TBD", "pos": "OF"},
+        {"name": "Wandy Asigen",       "org": "NYM", "level": "TBD", "pos": "SS"},
+        {"name": "Demetrio Crisantes", "org": "ARI", "level": "TBD", "pos": "2B"},
+    ],
+
+    "High N Tight": [
+        {"name": "Jhostynxon Garcia", "org": "BOS", "level": "TBD", "pos": "OF"},
+        {"name": "Jonathon Long",     "org": "CHC", "level": "TBD", "pos": "1B"},
+        {"name": "Jett Williams",     "org": "NYM", "level": "TBD", "pos": "SS"},
+        {"name": "Franklin Arias",    "org": "BOS", "level": "TBD", "pos": "SS"},
+        {"name": "Andrew Fischer",    "org": "MIL", "level": "TBD", "pos": "1B"},
+    ],
+
+    "Austin Waves": [
+        {"name": "Ty Johnson",      "org": "TBR", "level": "TBD", "pos": "P"},
+        {"name": "Jhonny Level",    "org": "SFG", "level": "TBD", "pos": "SS"},
+        {"name": "Robby Snelling",  "org": "SD",  "level": "TBD", "pos": "P"},
+        {"name": "Aroon Escobar",   "org": "PHI", "level": "TBD", "pos": "2B"},
+        {"name": "Caleb Bonemer",   "org": "CHW", "level": "TBD", "pos": "SS/3B"},
+        {"name": "Cam Collier",     "org": "CIN", "level": "TBD", "pos": "3B"},
+        {"name": "Zyhir Hope",      "org": "LAD", "level": "TBD", "pos": "OF"},
+        {"name": "Ryan Clifford",   "org": "NYM", "level": "TBD", "pos": "1B/OF"},
+    ],
+
+    "Seneca Falls Mafia": [
+        {"name": "Ethan Salas",       "org": "SD",  "level": "TBD", "pos": "C"},
+        {"name": "Blake Mitchell",    "org": "KC",  "level": "TBD", "pos": "C"},
+        {"name": "Brayden Taylor",    "org": "TB",  "level": "TBD", "pos": "3B"},
+        {"name": "Brock Wilken",      "org": "MIL", "level": "TBD", "pos": "3B"},
+        {"name": "Tommy Troy",        "org": "ARI", "level": "TBD", "pos": "SS"},
+        {"name": "Jaison Chourio",    "org": "CLE", "level": "TBD", "pos": "OF"},
+        {"name": "Nate George",       "org": "BAL", "level": "TBD", "pos": "OF"},
+        {"name": "Kendry Chourio",    "org": "KCR", "level": "TBD", "pos": "P"},
+        {"name": "Felnin Celesten",   "org": "SEA", "level": "TBD", "pos": "SS"},
+    ],
+
+    "Yazoo Yetis": [
+        {"name": "Travis Sykora",    "org": "WAS", "level": "TBD", "pos": "P"},
+        {"name": "Khal Stephen",     "org": "CLE", "level": "TBD", "pos": "P"},
+        {"name": "Trey Gibson",      "org": "BAL", "level": "TBD", "pos": "P"},
+        {"name": "Zachary Root",     "org": "LAD", "level": "TBD", "pos": "P"},
+        {"name": "Jack Wenninger",   "org": "NYM", "level": "TBD", "pos": "P"},
+    ],
+    # Add more league rosters here, e.g.:
+    # "Rival Squad": [
+    #     {"name": "Some Prospect", "org": "TEX", "level": "AA", "pos": "SS"},
+    # ],
+}
+
+
+def _build_players():
+    """Flatten FANTASY_TEAMS into the list the rest of the script works with,
+    tagging each entry with which fantasy roster it belongs to."""
+    players = []
+    for team_name, roster in FANTASY_TEAMS.items():
+        for p in roster:
+            entry = dict(p)
+            entry["fantasy_team"] = team_name
+            players.append(entry)
+    return players
+
+
+PLAYERS = _build_players()
 
 # Manual overrides: if a player can't be found (or the wrong same-name person
 # gets matched), look them up with --lookup "Name" to find the right
 # personId, then hardcode it here to skip the search step entirely.
+# Keyed by "Name|MLB Org" -- NOT affected by which fantasy team they're on,
+# since the same real player has the same personId no matter whose roster
+# you've got them tagged under.
 # e.g. "Luis Pena|MIL": 123456
 PERSON_ID_OVERRIDES = {
     "Luis Pena|MIL": 821270,        # confirmed via mlb.com search (434524 was a retired unrelated Luis Pena)
     "Yorger Bautista|SEA": 829045,  # confirmed via mlb.com search (not returned by the people/search endpoint)
     "Hyeseong Kim|LAD": 808975,     # confirmed via mlb.com search
     "Luis Gil|NYY": 661563,         # confirmed via mlb.com search
+
+    # League-wide rollout batch -- confirmed via web search (thebaseballcube.com /
+    # milb.com player pages showing MLBAM ID). Several of these fail search
+    # because the player's MLB-registered name differs from their common name.
+    "Kevin Defrank|MIA": 829074,               # registered as "Kevin DeFrank"
+    "Xavier Neyens|HOU": 815832,
+    "Aiva Arquette|MIA": 804109,                # full legal name "Aiva John Uakea Arquette"
+    "Aidan Miller|PHI": 805795,                 # was matching a game-log-empty namesake
+    "JoJo Parker|TOR": 828098,                  # registered as "Joseph Parker"
+    "Josuar De Jesus Gonzalez|SFG": 829034,     # registered as just "Josuar Gonzalez"
 }
 
 PITCHER_POS_TOKENS = {"SP", "RP", "P", "CP"}
@@ -94,7 +257,7 @@ PERSON_ID_TTL = 60 * 60 * 24 * 30   # 30 days
 GAME_LOG_TTL = 60 * 60              # 1 hour
 
 CSV_FIELDS = [
-    "date", "player", "org", "level", "pos", "type", "team", "opponent",
+    "fantasy_team", "date", "player", "org", "level", "pos", "type", "team", "opponent",
     "PA", "AB", "H", "R", "RBI", "2B", "HR", "SB", "CS", "BB", "K",
     "IP", "ER", "is_total",
 ]
@@ -324,6 +487,7 @@ def build_hitting_record(player, stat, date_str, opponent, team):
     return {
         "date": date_str, "player": player["name"], "org": player["org"],
         "level": player["level"], "pos": player["pos"], "type": "hitting",
+        "fantasy_team": player.get("fantasy_team", ""),
         "team": team, "opponent": opponent, "is_total": False,
         "PA": stat.get("plateAppearances", 0), "AB": stat.get("atBats", 0),
         "H": stat.get("hits", 0), "R": stat.get("runs", 0),
@@ -338,6 +502,7 @@ def build_pitching_record(player, stat, date_str, opponent, team):
     return {
         "date": date_str, "player": player["name"], "org": player["org"],
         "level": player["level"], "pos": player["pos"], "type": "pitching",
+        "fantasy_team": player.get("fantasy_team", ""),
         "team": team, "opponent": opponent, "is_total": False,
         "IP": stat.get("inningsPitched", "0.0"), "H": stat.get("hits", 0),
         "R": stat.get("runs", 0), "ER": stat.get("earnedRuns", 0),
@@ -365,6 +530,7 @@ def build_hitting_totals(player, records):
     return {
         "date": "TOTAL", "player": player["name"], "org": player["org"],
         "level": player["level"], "pos": player["pos"], "type": "hitting",
+        "fantasy_team": player.get("fantasy_team", ""),
         "team": "", "opponent": "", "is_total": True,
         "PA": sum(r["PA"] for r in records), "AB": sum(r["AB"] for r in records),
         "H": sum(r["H"] for r in records), "R": sum(r["R"] for r in records),
@@ -380,6 +546,7 @@ def build_pitching_totals(player, records):
     return {
         "date": "TOTAL", "player": player["name"], "org": player["org"],
         "level": player["level"], "pos": player["pos"], "type": "pitching",
+        "fantasy_team": player.get("fantasy_team", ""),
         "team": "", "opponent": "", "is_total": True,
         "IP": outs_to_ip(total_outs), "H": sum(r["H"] for r in records),
         "R": sum(r["R"] for r in records), "ER": sum(r["ER"] for r in records),
@@ -466,7 +633,10 @@ def _stat_cell(col, value, rec, pitcher):
     return text
 
 
-def write_rich(all_records, errors, days, season, plain_console=False):
+def write_rich(all_records, errors, days, season, plain_console=False, players=None):
+    from rich.rule import Rule
+
+    players = players if players is not None else PLAYERS
     console = Console(no_color=plain_console, width=None)
     if not console.is_terminal:
         console.width = max(console.width, 100)
@@ -474,20 +644,28 @@ def write_rich(all_records, errors, days, season, plain_console=False):
 
     by_player = {}
     for rec in all_records:
-        by_player.setdefault(rec["player"], []).append(rec)
+        key = (rec.get("fantasy_team", ""), rec["player"])
+        by_player.setdefault(key, []).append(rec)
 
-    for player in PLAYERS:
+    current_team = object()  # sentinel guarantees the first heading always prints
+    for player in players:
+        fantasy_team = player.get("fantasy_team", "")
+        if fantasy_team != current_team:
+            console.print(Rule(f"[bold]{fantasy_team}[/bold]", style="bright_black"))
+            current_team = fantasy_team
+
         name = player["name"]
+        key = (fantasy_team, name)
         pitcher = is_pitcher(player["pos"])
         border_color = "red" if pitcher else "blue"
         title = f"{name}  ·  {player['org']} {player['level']} {player['pos']}"
 
-        if name in errors:
-            console.print(Panel(f"[dim]{errors[name]}[/dim]", title=title, title_align="left",
+        if key in errors:
+            console.print(Panel(f"[dim]{errors[key]}[/dim]", title=title, title_align="left",
                                  border_style="yellow", box=rich_box.ROUNDED))
             continue
 
-        if name not in by_player:
+        if key not in by_player:
             console.print(Panel(f"[dim]no games played in the last {days} day(s)[/dim]", title=title,
                                  title_align="left", border_style="dim", box=rich_box.ROUNDED))
             continue
@@ -498,7 +676,7 @@ def write_rich(all_records, errors, days, season, plain_console=False):
             justify = "left" if col in ("Date", "Team", "Opp") else "right"
             table.add_column(col, justify=justify, no_wrap=True, overflow="ellipsis")
 
-        for rec in by_player[name]:
+        for rec in by_player[key]:
             if rec.get("is_total"):
                 table.add_section()
                 row = ["[bold]TOTAL[/bold]", "", ""]
@@ -518,23 +696,32 @@ def write_rich(all_records, errors, days, season, plain_console=False):
     console.print()
 
 
-def write_text(all_records, errors, days, season, out):
+def write_text(all_records, errors, days, season, out, players=None):
+    players = players if players is not None else PLAYERS
     stream = out or sys.stdout
     print(f"Box scores for the last {days} day(s), season {season}\n", file=stream)
     by_player = {}
     for rec in all_records:
-        by_player.setdefault(rec["player"], []).append(rec)
+        key = (rec.get("fantasy_team", ""), rec["player"])
+        by_player.setdefault(key, []).append(rec)
 
-    for player in PLAYERS:
+    current_team = object()  # sentinel guarantees the first heading always prints
+    for player in players:
+        fantasy_team = player.get("fantasy_team", "")
+        if fantasy_team != current_team:
+            print(f"=== {fantasy_team} ===\n", file=stream)
+            current_team = fantasy_team
+
         name = player["name"]
+        key = (fantasy_team, name)
         header = f"{name} ({player['org']} {player['level']} {player['pos']}):"
         print(header, file=stream)
-        if name in errors:
-            print(f"  {errors[name]}", file=stream)
-        elif name not in by_player:
+        if key in errors:
+            print(f"  {errors[key]}", file=stream)
+        elif key not in by_player:
             print(f"  no games played in the last {days} day(s)", file=stream)
         else:
-            for rec in by_player[name]:
+            for rec in by_player[key]:
                 if rec.get("is_total"):
                     print(file=stream)
                 line = format_pitching_line(rec) if rec["type"] == "pitching" else format_hitting_line(rec)
@@ -614,6 +801,11 @@ def main():
         help="disable Rich colorized tables even if Rich is installed; "
              "falls back to the original plain-text output",
     )
+    parser.add_argument(
+        "--team", default=None, metavar="TEAM",
+        help="only run the report for one fantasy roster from FANTASY_TEAMS "
+             "(case-insensitive), e.g. --team Zebras",
+    )
     args = parser.parse_args()
 
     if args.lookup_id:
@@ -652,6 +844,13 @@ def main():
     if args.format in ("csv", "json") and not args.out:
         parser.error(f"--out is required when --format={args.format}")
 
+    players = PLAYERS
+    if args.team:
+        players = [p for p in PLAYERS if p.get("fantasy_team", "").lower() == args.team.lower()]
+        if not players:
+            known = ", ".join(sorted(FANTASY_TEAMS.keys()))
+            parser.error(f"no players found for team '{args.team}'. Known teams: {known}")
+
     cache = Cache(args.cache_file, enabled=not args.no_cache)
     session = requests.Session()
     session.headers.update({"User-Agent": "prospect-boxscore-script/1.0"})
@@ -659,14 +858,15 @@ def main():
     all_records = []
     errors = {}
 
-    for player in PLAYERS:
+    for player in players:
+        error_key = (player.get("fantasy_team", ""), player["name"])
         try:
             records, err = process_player(player, args.days, args.season, session, cache, debug=args.debug)
             if err:
-                errors[player["name"]] = err
+                errors[error_key] = err
             all_records.extend(records)
         except Exception as e:
-            errors[player["name"]] = f"error - {e}"
+            errors[error_key] = f"error - {e}"
         time.sleep(0.1 if cache.enabled else 0.25)  # cache hits skip the actual request anyway
 
     cache.save()
@@ -675,13 +875,13 @@ def main():
         if args.out:
             # Writing to a file: always plain text, never ANSI codes.
             with open(args.out, "w") as f:
-                write_text(all_records, errors, args.days, args.season, f)
+                write_text(all_records, errors, args.days, args.season, f, players=players)
         elif RICH_AVAILABLE and not args.plain:
-            write_rich(all_records, errors, args.days, args.season)
+            write_rich(all_records, errors, args.days, args.season, players=players)
         else:
             if not RICH_AVAILABLE and not args.plain:
                 print("(tip: run 'uv add rich' for colorized table output)\n", file=sys.stderr)
-            write_text(all_records, errors, args.days, args.season, None)
+            write_text(all_records, errors, args.days, args.season, None, players=players)
     elif args.format == "csv":
         write_csv(all_records, args.out)
         print(f"Wrote {len(all_records)} rows to {args.out}", file=sys.stderr)
