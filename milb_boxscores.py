@@ -68,7 +68,7 @@ FANTASY_TEAMS = {
         {"name": "Steele Hall",       "org": "CIN", "level": "CPX",  "pos": "SS"},
         {"name": "Tyler Bremner",     "org": "LAA", "level": "A+",   "pos": "SP"},
         {"name": "Luis Pena",         "org": "MIL", "level": "A+",   "pos": "2B/SS"},
-        {"name": "Hyeseong Kim",      "org": "LAD", "level": "AAA",  "pos": "2B/SS/OF"},
+        {"name": "Owen Murphy",       "org": "ATL", "level": "AAA",  "pos": "SP"},
         {"name": "Luis Gil",          "org": "NYY", "level": "MLB",  "pos": "SP"},
     ],
 
