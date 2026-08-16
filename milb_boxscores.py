@@ -69,7 +69,8 @@ FANTASY_TEAMS = {
         {"name": "Tyler Bremner",     "org": "LAA", "level": "A+",   "pos": "SP"},
         {"name": "Luis Pena",         "org": "MIL", "level": "A+",   "pos": "2B/SS"},
         {"name": "Owen Murphy",       "org": "ATL", "level": "AAA",  "pos": "SP"},
-        {"name": "Luis Gil",          "org": "NYY", "level": "MLB",  "pos": "SP"},
+        {"name": "Devin Taylor",      "org": "ATH", "level": "AA",   "pos": "OF"},
+        {"name": "Nathan Flewelling", "org": "TBR", "level": "A+",   "pos": "C"}
     ],
 
     # Level ("TBD" below) is cosmetic only -- get_game_log() scans every
