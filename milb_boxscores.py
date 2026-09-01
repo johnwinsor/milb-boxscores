@@ -70,7 +70,8 @@ FANTASY_TEAMS = {
         {"name": "Luis Pena",         "org": "MIL", "level": "A+",   "pos": "2B/SS"},
         {"name": "Owen Murphy",       "org": "ATL", "level": "AAA",  "pos": "SP"},
         {"name": "Devin Taylor",      "org": "ATH", "level": "AA",   "pos": "OF"},
-        {"name": "Nathan Flewelling", "org": "TBR", "level": "A+",   "pos": "C"}
+        {"name": "Nathan Flewelling", "org": "TBR", "level": "A+",   "pos": "C"},
+        {"name": "Cam Cannarella",    "org": "MIA", "level": "AA",  "pos": "OF"},
     ],
 
     # Level ("TBD" below) is cosmetic only -- get_game_log() scans every
