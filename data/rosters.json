@@ -1,0 +1,902 @@
+{
+  "schema": 1,
+  "updated_at": "2026-09-01T03:51:30Z",
+  "teams": [
+    {
+      "name": "Zebras",
+      "slug": "zebras",
+      "players": [
+        {
+          "name": "Yorger Bautista",
+          "org": "SEA",
+          "level": "CPX",
+          "pos": "OF",
+          "person_id": 829045,
+          "notes": ""
+        },
+        {
+          "name": "Eduardo Quintero",
+          "org": "LAD",
+          "level": "A+",
+          "pos": "OF",
+          "person_id": 808234,
+          "notes": ""
+        },
+        {
+          "name": "Jonny Farmelo",
+          "org": "SEA",
+          "level": "AA",
+          "pos": "OF",
+          "person_id": 806071,
+          "notes": ""
+        },
+        {
+          "name": "Tanner McDougal",
+          "org": "CHW",
+          "level": "AAA",
+          "pos": "SP/RP",
+          "person_id": 701780,
+          "notes": ""
+        },
+        {
+          "name": "Rainiel Rodriguez",
+          "org": "STL",
+          "level": "AA",
+          "pos": "C",
+          "person_id": 823787,
+          "notes": ""
+        },
+        {
+          "name": "Mike Sirota",
+          "org": "LAD",
+          "level": "AA",
+          "pos": "OF",
+          "person_id": 701527,
+          "notes": ""
+        },
+        {
+          "name": "Jamie Arnold",
+          "org": "ATH",
+          "level": "AA",
+          "pos": "SP",
+          "person_id": 701364,
+          "notes": ""
+        },
+        {
+          "name": "Steele Hall",
+          "org": "CIN",
+          "level": "CPX",
+          "pos": "SS",
+          "person_id": 829162,
+          "notes": ""
+        },
+        {
+          "name": "Tyler Bremner",
+          "org": "LAA",
+          "level": "A+",
+          "pos": "SP",
+          "person_id": 803285,
+          "notes": ""
+        },
+        {
+          "name": "Luis Pena",
+          "org": "MIL",
+          "level": "A+",
+          "pos": "2B/SS",
+          "person_id": 821270,
+          "notes": ""
+        },
+        {
+          "name": "Owen Murphy",
+          "org": "ATL",
+          "level": "AAA",
+          "pos": "SP",
+          "person_id": 702566,
+          "notes": ""
+        },
+        {
+          "name": "Devin Taylor",
+          "org": "ATH",
+          "level": "AA",
+          "pos": "OF",
+          "person_id": 805127,
+          "notes": ""
+        },
+        {
+          "name": "Nathan Flewelling",
+          "org": "TB",
+          "level": "A+",
+          "pos": "C",
+          "person_id": 807083,
+          "notes": ""
+        },
+        {
+          "name": "Cam Cannarella",
+          "org": "MIA",
+          "level": "AA",
+          "pos": "OF",
+          "person_id": 703448,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Ghost Ride the WHIP",
+      "slug": "ghost-ride-the-whip",
+      "players": [
+        {
+          "name": "Kane Kepley",
+          "org": "CHC",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 823807,
+          "notes": ""
+        },
+        {
+          "name": "Kevin Defrank",
+          "org": "MIA",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 829074,
+          "notes": ""
+        },
+        {
+          "name": "Jefferson Rojas",
+          "org": "CHC",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 800473,
+          "notes": ""
+        },
+        {
+          "name": "Jace LaViolette",
+          "org": "CLE",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 702593,
+          "notes": ""
+        },
+        {
+          "name": "Billy Carlson",
+          "org": "CHW",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 815814,
+          "notes": ""
+        },
+        {
+          "name": "Xavier Neyens",
+          "org": "HOU",
+          "level": "TBD",
+          "pos": "3B",
+          "person_id": 815832,
+          "notes": ""
+        },
+        {
+          "name": "Ralphy Velazquez",
+          "org": "CLE",
+          "level": "TBD",
+          "pos": "1B",
+          "person_id": 806252,
+          "notes": ""
+        },
+        {
+          "name": "Aiva Arquette",
+          "org": "MIA",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 804109,
+          "notes": ""
+        },
+        {
+          "name": "Jaxon Wiggins",
+          "org": "CHC",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 694393,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "DC Outlaws",
+      "slug": "dc-outlaws",
+      "players": [
+        {
+          "name": "Aidan Miller",
+          "org": "PHI",
+          "level": "TBD",
+          "pos": "3B",
+          "person_id": 805795,
+          "notes": ""
+        },
+        {
+          "name": "Lazaro Montes",
+          "org": "SEA",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 703155,
+          "notes": ""
+        },
+        {
+          "name": "George Lombard Jr.",
+          "org": "NYY",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 806146,
+          "notes": ""
+        },
+        {
+          "name": "Ryan Sloan",
+          "org": "SEA",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 815549,
+          "notes": ""
+        },
+        {
+          "name": "Josuar De Jesus Gonzalez",
+          "org": "SF",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 829034,
+          "notes": ""
+        },
+        {
+          "name": "Theo Gillen",
+          "org": "TB",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 815394,
+          "notes": ""
+        },
+        {
+          "name": "JoJo Parker",
+          "org": "TOR",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 828098,
+          "notes": ""
+        },
+        {
+          "name": "Brody Hopkins",
+          "org": "TB",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 811315,
+          "notes": ""
+        },
+        {
+          "name": "Tyson Lewis",
+          "org": "CIN",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 815653,
+          "notes": ""
+        },
+        {
+          "name": "Francisco Renteria",
+          "org": "PHI",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 836353,
+          "notes": ""
+        },
+        {
+          "name": "Kevin Alvarez",
+          "org": "HOU",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 829037,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "BaseVOLS",
+      "slug": "basevols",
+      "players": [
+        {
+          "name": "Marcus Phillips",
+          "org": "BOS",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 815071,
+          "notes": ""
+        },
+        {
+          "name": "Drew Beam",
+          "org": "KC",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 701795,
+          "notes": ""
+        },
+        {
+          "name": "Drue Hackenberg",
+          "org": "ATL",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 802357,
+          "notes": ""
+        },
+        {
+          "name": "Quinn Mathews",
+          "org": "STL",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 687273,
+          "notes": ""
+        },
+        {
+          "name": "Ricky Tiedemann",
+          "org": "TOR",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 694357,
+          "notes": ""
+        },
+        {
+          "name": "James Tibbs III",
+          "org": "SF",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 696486,
+          "notes": ""
+        },
+        {
+          "name": "Seaver King",
+          "org": "WSH",
+          "level": "TBD",
+          "pos": "SS/OF",
+          "person_id": 814409,
+          "notes": ""
+        },
+        {
+          "name": "Cam Caminiti",
+          "org": "ATL",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 111908,
+          "notes": ""
+        },
+        {
+          "name": "Kendry Rojas",
+          "org": "MIN",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 696070,
+          "notes": ""
+        },
+        {
+          "name": "Carlos LaGrange",
+          "org": "NYY",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 801739,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Luck Dragons",
+      "slug": "luck-dragons",
+      "players": [
+        {
+          "name": "Braylon Payne",
+          "org": "MIL",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 815520,
+          "notes": ""
+        },
+        {
+          "name": "Ethan Conrad",
+          "org": "CHC",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 828255,
+          "notes": ""
+        },
+        {
+          "name": "Emmanuel Rodriguez",
+          "org": "MIN",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 691181,
+          "notes": ""
+        },
+        {
+          "name": "Emil Morales",
+          "org": "LAD",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 815896,
+          "notes": ""
+        },
+        {
+          "name": "Josue Briceno",
+          "org": "DET",
+          "level": "TBD",
+          "pos": "1B",
+          "person_id": 800522,
+          "notes": ""
+        },
+        {
+          "name": "Alfredo Duno",
+          "org": "CIN",
+          "level": "TBD",
+          "pos": "C",
+          "person_id": 806957,
+          "notes": ""
+        },
+        {
+          "name": "Sebastian Walcott",
+          "org": "TEX",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 806964,
+          "notes": ""
+        },
+        {
+          "name": "Thomas White",
+          "org": "MIA",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 806258,
+          "notes": ""
+        },
+        {
+          "name": "Luis Hernandez",
+          "org": "SF",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 434682,
+          "notes": ""
+        },
+        {
+          "name": "Caden Scarborough",
+          "org": "TEX",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 807291,
+          "notes": ""
+        },
+        {
+          "name": "Jarlin Susana",
+          "org": "WSH",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 703186,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "LawDog",
+      "slug": "lawdog",
+      "players": [
+        {
+          "name": "Gavin Kilen",
+          "org": "SF",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 702264,
+          "notes": ""
+        },
+        {
+          "name": "Bryce Rainer",
+          "org": "DET",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 800614,
+          "notes": ""
+        },
+        {
+          "name": "Arjun Nimmala",
+          "org": "TOR",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 805796,
+          "notes": ""
+        },
+        {
+          "name": "Moises Chace",
+          "org": "PHI",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 691330,
+          "notes": ""
+        },
+        {
+          "name": "Jeferson Quero",
+          "org": "MIL",
+          "level": "TBD",
+          "pos": "C",
+          "person_id": 691620,
+          "notes": ""
+        },
+        {
+          "name": "Michael Arroyo",
+          "org": "SEA",
+          "level": "TBD",
+          "pos": "2B",
+          "person_id": 703197,
+          "notes": ""
+        },
+        {
+          "name": "Jurrangelo Cijntje",
+          "org": "STL",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 701388,
+          "notes": ""
+        },
+        {
+          "name": "Angel Genao",
+          "org": "CLE",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 694197,
+          "notes": ""
+        },
+        {
+          "name": "Ike Irish",
+          "org": "BAL",
+          "level": "TBD",
+          "pos": "1B/OF",
+          "person_id": 702610,
+          "notes": ""
+        },
+        {
+          "name": "Ching-Hsien Ko",
+          "org": "LAD",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 828667,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Samsung Lions",
+      "slug": "samsung-lions",
+      "players": [
+        {
+          "name": "Aidan Smith",
+          "org": "TB",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 806223,
+          "notes": ""
+        },
+        {
+          "name": "George Klassen",
+          "org": "LAA",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 691946,
+          "notes": ""
+        },
+        {
+          "name": "Luis de Leon",
+          "org": "BAL",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 801725,
+          "notes": ""
+        },
+        {
+          "name": "Luis Perales",
+          "org": "WSH",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 691384,
+          "notes": ""
+        },
+        {
+          "name": "Elmer Rodriguez",
+          "org": "NYY",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 695684,
+          "notes": ""
+        },
+        {
+          "name": "Bo Davidson",
+          "org": "SF",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 815589,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Truffle Muts",
+      "slug": "truffle-muts",
+      "players": [
+        {
+          "name": "Jacob Reimer",
+          "org": "NYM",
+          "level": "TBD",
+          "pos": "3B",
+          "person_id": 702544,
+          "notes": ""
+        },
+        {
+          "name": "Elian Pena",
+          "org": "NYM",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 829033,
+          "notes": ""
+        },
+        {
+          "name": "Josue De Paula",
+          "org": "LAD",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 800543,
+          "notes": ""
+        },
+        {
+          "name": "Wandy Asigen",
+          "org": "NYM",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 836583,
+          "notes": ""
+        },
+        {
+          "name": "Demetrio Crisantes",
+          "org": "ARI",
+          "level": "TBD",
+          "pos": "2B",
+          "person_id": 702679,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "High N Tight",
+      "slug": "high-n-tight",
+      "players": [
+        {
+          "name": "Jhostynxon Garcia",
+          "org": "BOS",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 691373,
+          "notes": ""
+        },
+        {
+          "name": "Jonathon Long",
+          "org": "CHC",
+          "level": "TBD",
+          "pos": "1B",
+          "person_id": 675085,
+          "notes": ""
+        },
+        {
+          "name": "Jett Williams",
+          "org": "NYM",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 702518,
+          "notes": ""
+        },
+        {
+          "name": "Franklin Arias",
+          "org": "BOS",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 808265,
+          "notes": ""
+        },
+        {
+          "name": "Andrew Fischer",
+          "org": "MIL",
+          "level": "TBD",
+          "pos": "1B",
+          "person_id": 702652,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Austin Waves",
+      "slug": "austin-waves",
+      "players": [
+        {
+          "name": "Ty Johnson",
+          "org": "TB",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 694494,
+          "notes": ""
+        },
+        {
+          "name": "Jhonny Level",
+          "org": "SF",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 815929,
+          "notes": ""
+        },
+        {
+          "name": "Robby Snelling",
+          "org": "SD",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 702281,
+          "notes": ""
+        },
+        {
+          "name": "Aroon Escobar",
+          "org": "PHI",
+          "level": "TBD",
+          "pos": "2B",
+          "person_id": 800169,
+          "notes": ""
+        },
+        {
+          "name": "Caleb Bonemer",
+          "org": "CHW",
+          "level": "TBD",
+          "pos": "SS/3B",
+          "person_id": 815352,
+          "notes": ""
+        },
+        {
+          "name": "Cam Collier",
+          "org": "CIN",
+          "level": "TBD",
+          "pos": "3B",
+          "person_id": 702253,
+          "notes": ""
+        },
+        {
+          "name": "Zyhir Hope",
+          "org": "LAD",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 814307,
+          "notes": ""
+        },
+        {
+          "name": "Ryan Clifford",
+          "org": "NYM",
+          "level": "TBD",
+          "pos": "1B/OF",
+          "person_id": 691775,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Seneca Falls Mafia",
+      "slug": "seneca-falls-mafia",
+      "players": [
+        {
+          "name": "Ethan Salas",
+          "org": "SD",
+          "level": "TBD",
+          "pos": "C",
+          "person_id": 806956,
+          "notes": ""
+        },
+        {
+          "name": "Blake Mitchell",
+          "org": "KC",
+          "level": "TBD",
+          "pos": "C",
+          "person_id": 805810,
+          "notes": ""
+        },
+        {
+          "name": "Brayden Taylor",
+          "org": "TB",
+          "level": "TBD",
+          "pos": "3B",
+          "person_id": 694966,
+          "notes": ""
+        },
+        {
+          "name": "Brock Wilken",
+          "org": "MIL",
+          "level": "TBD",
+          "pos": "3B",
+          "person_id": 694385,
+          "notes": ""
+        },
+        {
+          "name": "Tommy Troy",
+          "org": "ARI",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 694371,
+          "notes": ""
+        },
+        {
+          "name": "Jaison Chourio",
+          "org": "CLE",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 702693,
+          "notes": ""
+        },
+        {
+          "name": "Nate George",
+          "org": "BAL",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 825582,
+          "notes": ""
+        },
+        {
+          "name": "Kendry Chourio",
+          "org": "KC",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 830402,
+          "notes": ""
+        },
+        {
+          "name": "Felnin Celesten",
+          "org": "SEA",
+          "level": "TBD",
+          "pos": "SS",
+          "person_id": 806958,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "name": "Yazoo Yetis",
+      "slug": "yazoo-yetis",
+      "players": [
+        {
+          "name": "Travis Sykora",
+          "org": "WSH",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 805809,
+          "notes": ""
+        },
+        {
+          "name": "Khal Stephen",
+          "org": "CLE",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 701590,
+          "notes": ""
+        },
+        {
+          "name": "Trey Gibson",
+          "org": "BAL",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 694346,
+          "notes": ""
+        },
+        {
+          "name": "Zachary Root",
+          "org": "LAD",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 702539,
+          "notes": ""
+        },
+        {
+          "name": "Jack Wenninger",
+          "org": "NYM",
+          "level": "TBD",
+          "pos": "P",
+          "person_id": 811307,
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}
