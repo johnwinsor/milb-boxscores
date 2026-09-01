@@ -58,3 +58,19 @@ def test_roundtrip(tmp_path):
     again = rosters.load(path)
     assert again[0].name == "Zebras"
     assert again[0].players[0].person_id == 829045
+
+
+def test_save_skips_write_when_only_the_timestamp_would_change(tmp_path):
+    """to_document() stamps a fresh updated_at, so an unconditional write
+    dirties rosters.json every ingest and yields an empty daily commit."""
+    path = tmp_path / "rosters.json"
+    teams = rosters.parse(VALID)
+    assert rosters.save(teams, path) is True
+    before = path.read_text()
+
+    assert rosters.save(teams, path) is False      # nothing changed
+    assert path.read_text() == before
+
+    teams[0].players[1].person_id = 12345          # a real change
+    assert rosters.save(teams, path) is True
+    assert path.read_text() != before

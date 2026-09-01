@@ -41,10 +41,12 @@ jobs:
       - name: Run tests
         run: uv run --all-groups pytest -q
 
-      # Skipped on a push that only touched web/ or src/ -- the data is already
-      # current and the API calls would be wasted.
+      # Always ingest. The previous conditional skipped this on merge commits,
+      # because head_commit.modified does not list a merged branch's files --
+      # so merging a roster change would not have refreshed the data. A full
+      # sweep is ~13s and the upsert is a no-op for unchanged games, so there
+      # is nothing to save by guessing.
       - name: Ingest game logs
-        if: github.event_name != 'push' || contains(github.event.head_commit.modified, 'data/rosters.json')
         run: uv run milb ingest --season "$(date -u +%Y)"
 
       - name: Export static JSON

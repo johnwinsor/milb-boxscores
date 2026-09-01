@@ -48,3 +48,30 @@ def test_upsert_is_idempotent(conn):
     db.upsert_game_logs(conn, [row])
     db.upsert_game_logs(conn, [row])
     assert conn.execute("SELECT count(*) FROM game_log").fetchone()[0] == 1
+
+
+def test_unchanged_row_is_a_true_noop(conn):
+    """An unchanged game must not be rewritten.
+
+    INSERT OR REPLACE stamped a fresh fetched_at on every row each run, which
+    made the whole SQLite file dirty and produced a ~6.6MB binary commit daily
+    whether or not any game was new.
+    """
+    conn.execute("INSERT INTO player (person_id) VALUES (1)")
+    row = split_to_row(split(100, "2026-08-30", hits=2), 1, "hitting", 2026, "FIRST")
+    assert db.upsert_game_logs(conn, [row]) == 1
+
+    later = split_to_row(split(100, "2026-08-30", hits=2), 1, "hitting", 2026, "SECOND")
+    assert db.upsert_game_logs(conn, [later]) == 0
+    # fetched_at must still be the original -- nothing was touched.
+    assert conn.execute("SELECT fetched_at FROM game_log").fetchone()[0] == "FIRST"
+
+
+def test_corrected_stat_line_does_update(conn):
+    """A no-op on unchanged rows must not mask a real correction."""
+    conn.execute("INSERT INTO player (person_id) VALUES (1)")
+    db.upsert_game_logs(conn, [split_to_row(split(100, "2026-08-30", hits=2), 1, "hitting", 2026, "FIRST")])
+    corrected = split_to_row(split(100, "2026-08-30", hits=3), 1, "hitting", 2026, "SECOND")
+    assert db.upsert_game_logs(conn, [corrected]) == 1
+    stored = conn.execute("SELECT h, fetched_at FROM game_log").fetchone()
+    assert tuple(stored) == (3, "SECOND")

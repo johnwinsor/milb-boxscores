@@ -98,11 +98,25 @@ def to_document(teams: list[FantasyTeam]) -> dict:
     }
 
 
-def save(teams: list[FantasyTeam], path: Path | str | None = None) -> Path:
+def save(teams: list[FantasyTeam], path: Path | str | None = None) -> bool:
+    """Write rosters.json, but only when a team or player actually changed.
+
+    to_document() stamps a fresh updated_at, so an unconditional write dirties
+    the file on every ingest and produces an empty daily commit. Comparing
+    everything except that timestamp keeps the history meaningful.
+    """
     path = Path(path or ROSTERS_PATH)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(to_document(teams), indent=2) + "\n")
-    return path
+    doc = to_document(teams)
+    if path.exists():
+        try:
+            existing = json.loads(path.read_text())
+            if existing.get("teams") == doc["teams"]:
+                return False
+        except json.JSONDecodeError:
+            pass  # unreadable -> rewrite it
+    path.write_text(json.dumps(doc, indent=2) + "\n")
+    return True
 
 
 def flatten(teams: list[FantasyTeam]) -> list[RosterEntry]:

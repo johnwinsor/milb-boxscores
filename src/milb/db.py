@@ -143,12 +143,24 @@ def upsert_game_logs(conn: sqlite3.Connection, rows) -> int:
     if not payload:
         return 0
     placeholders = ",".join("?" * len(GAME_LOG_COLUMNS))
-    conn.executemany(
-        f"INSERT OR REPLACE INTO game_log ({','.join(GAME_LOG_COLUMNS)}) "
-        f"VALUES ({placeholders})",
+    # Update only when the game's stat line actually changed.
+    #
+    # INSERT OR REPLACE rewrites every row unconditionally, and since fetched_at
+    # moves each run that made the whole file dirty on every ingest -- which
+    # meant committing a ~6.6MB binary daily whether or not a single game was
+    # new. The WHERE turns an unchanged row into a genuine no-op, so the
+    # committed diff tracks real data.
+    updatable = [c for c in GAME_LOG_COLUMNS
+                 if c not in ("person_id", "game_pk", "group_type")]
+    assignments = ",".join(f"{c}=excluded.{c}" for c in updatable)
+    cur = conn.executemany(
+        f"INSERT INTO game_log ({','.join(GAME_LOG_COLUMNS)}) "
+        f"VALUES ({placeholders}) "
+        f"ON CONFLICT(person_id, game_pk, group_type) DO UPDATE SET {assignments} "
+        f"WHERE game_log.raw_stat IS NOT excluded.raw_stat",
         payload,
     )
-    return len(payload)
+    return cur.rowcount if cur.rowcount and cur.rowcount > 0 else 0
 
 
 def start_run(conn: sqlite3.Connection, season: int, started_at: str) -> int:
