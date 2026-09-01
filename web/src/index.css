@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Dark by default -- the terminal aesthetic this replaces reads well, and the
+   stat colours were chosen against a dark ground. */
+html { color-scheme: dark; }
+body {
+  @apply bg-neutral-950 text-neutral-200 antialiased;
+  font-feature-settings: "tnum" 1; /* tabular figures keep stat columns aligned */
+}

@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "overrides": [
+    {
+      "name": "Aidan Miller",
+      "org": "PHI",
+      "person_id": 805795,
+      "note": "was matching a game-log-empty namesake"
+    },
+    {
+      "name": "Aiva Arquette",
+      "org": "MIA",
+      "person_id": 804109,
+      "note": "full legal name \"Aiva John Uakea Arquette\""
+    },
+    {
+      "name": "JoJo Parker",
+      "org": "TOR",
+      "person_id": 828098,
+      "note": "registered as \"Joseph Parker\""
+    },
+    {
+      "name": "Josuar De Jesus Gonzalez",
+      "org": "SF",
+      "person_id": 829034,
+      "note": "registered as just \"Josuar Gonzalez\""
+    },
+    {
+      "name": "Kevin Defrank",
+      "org": "MIA",
+      "person_id": 829074,
+      "note": "registered as \"Kevin DeFrank\""
+    },
+    {
+      "name": "Luis Pena",
+      "org": "MIL",
+      "person_id": 821270,
+      "note": "434524 was a retired unrelated Luis Pena"
+    },
+    {
+      "name": "Xavier Neyens",
+      "org": "HOU",
+      "person_id": 815832,
+      "note": "confirmed via mlb.com search"
+    },
+    {
+      "name": "Yorger Bautista",
+      "org": "SEA",
+      "person_id": 829045,
+      "note": "not returned by the people/search endpoint"
+    }
+  ]
+}
