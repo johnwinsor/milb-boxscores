@@ -17,8 +17,14 @@ def split(game_pk, date, **stat):
 
 
 @pytest.fixture
-def conn():
-    c = db_module.connect(":memory:")
+def db_path(tmp_path):
+    return tmp_path / "test.sqlite"
+
+
+@pytest.fixture
+def conn(db_path):
+    # A real file, not :memory:, so export can reopen it read-only.
+    c = db_module.connect(db_path)
     db_module.init(c)
     yield c
     c.close()

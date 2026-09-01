@@ -1,0 +1,90 @@
+name: Update and deploy
+
+on:
+  schedule:
+    # 11:00 UTC ~ 6-7am ET, after the last West Coast game has finalized.
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+  # Fired by the web app's "Refresh data now" button.
+  repository_dispatch:
+    types: [refresh]
+  push:
+    branches: [main]
+    paths:
+      - "data/rosters.json"
+      - "data/overrides.json"
+      - "src/**"
+      - "web/**"
+      - ".github/workflows/update.yml"
+
+permissions:
+  contents: write   # commit the refreshed database
+  pages: write
+  id-token: write
+
+# Never let two runs write the database at once. Queue instead of cancelling:
+# a cancelled run could leave a half-written commit.
+concurrency:
+  group: update-and-deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Run tests
+        run: uv run --all-groups pytest -q
+
+      # Skipped on a push that only touched web/ or src/ -- the data is already
+      # current and the API calls would be wasted.
+      - name: Ingest game logs
+        if: github.event_name != 'push' || contains(github.event.head_commit.modified, 'data/rosters.json')
+        run: uv run milb ingest --season "$(date -u +%Y)"
+
+      - name: Export static JSON
+        run: uv run milb export --season "$(date -u +%Y)"
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/milb.sqlite data/rosters.json
+          if git diff --cached --quiet; then
+            echo "no data changes"
+          else
+            # [skip ci] keeps this commit from re-triggering the push filter.
+            git commit -m "Daily data refresh $(date -u +%Y-%m-%d) [skip ci]"
+            git push
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Build site
+        working-directory: web
+        run: |
+          npm ci
+          npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

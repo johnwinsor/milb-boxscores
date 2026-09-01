@@ -18,3 +18,4 @@ milb_cache.json
 # SQLite sidecar files (the .sqlite itself IS committed)
 *.sqlite-wal
 *.sqlite-shm
+web/tsconfig.tsbuildinfo

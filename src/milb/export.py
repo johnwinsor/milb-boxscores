@@ -157,13 +157,15 @@ def run(season: int, db_path=None, out_dir=None, today: date | None = None) -> i
         written += 1
 
     # One file per player: full season log, splits, and level moves.
+    # Dedupe within this run, not against the filesystem -- checking os.path
+    # would skip every player on a re-export and leave stale files behind.
+    seen_players: set[int] = set()
     for entry in roster:
         pid = entry["person_id"]
-        if not pid:
-            continue
+        if not pid or pid in seen_players:
+            continue  # a player rostered by two fantasy teams needs one file
+        seen_players.add(pid)
         path = out / "players" / f"{pid}.json"
-        if path.exists():
-            continue  # a player rostered by two teams needs only one file
         is_p = entry["group_type"] == "pitching"
         log = query.season_log(conn, pid, season)
         games = [_game_row(g, is_p) for g in log]
