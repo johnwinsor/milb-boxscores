@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-07T23:56:55Z",
+  "updated_at": "2026-09-07T23:57:23Z",
   "teams": [
     {
       "name": "Zebras",
@@ -113,7 +113,7 @@
         {
           "name": "Owen Murphy",
           "org": "ARI",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "OF",
           "person_id": 702566,
           "notes": ""
