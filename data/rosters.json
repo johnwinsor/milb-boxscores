@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-01T03:51:30Z",
+  "updated_at": "2026-09-07T21:10:16Z",
   "teams": [
     {
       "name": "Zebras",
@@ -127,7 +127,7 @@
         {
           "name": "Kane Kepley",
           "org": "CHC",
-          "level": "TBD",
+          "level": "AA",
           "pos": "OF",
           "person_id": 823807,
           "notes": ""
