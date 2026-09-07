@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-07T21:10:16Z",
+  "updated_at": "2026-09-07T21:14:31Z",
   "teams": [
     {
       "name": "Zebras",
@@ -9,7 +9,7 @@
         {
           "name": "Yorger Bautista",
           "org": "SEA",
-          "level": "CPX",
+          "level": "A",
           "pos": "OF",
           "person_id": 829045,
           "notes": ""
@@ -57,7 +57,7 @@
         {
           "name": "Jamie Arnold",
           "org": "ATH",
-          "level": "AA",
+          "level": "AAA",
           "pos": "SP",
           "person_id": 701364,
           "notes": ""
@@ -65,7 +65,7 @@
         {
           "name": "Steele Hall",
           "org": "CIN",
-          "level": "CPX",
+          "level": "A",
           "pos": "SS",
           "person_id": 829162,
           "notes": ""
@@ -73,7 +73,7 @@
         {
           "name": "Tyler Bremner",
           "org": "LAA",
-          "level": "A+",
+          "level": "AA",
           "pos": "SP",
           "person_id": 803285,
           "notes": ""
@@ -81,7 +81,7 @@
         {
           "name": "Luis Pena",
           "org": "MIL",
-          "level": "A+",
+          "level": "AA",
           "pos": "2B/SS",
           "person_id": 821270,
           "notes": ""
@@ -97,7 +97,7 @@
         {
           "name": "Devin Taylor",
           "org": "ATH",
-          "level": "AA",
+          "level": "AAA",
           "pos": "OF",
           "person_id": 805127,
           "notes": ""
@@ -113,7 +113,7 @@
         {
           "name": "Cam Cannarella",
           "org": "MIA",
-          "level": "AA",
+          "level": "AAA",
           "pos": "OF",
           "person_id": 703448,
           "notes": ""
@@ -143,7 +143,7 @@
         {
           "name": "Jefferson Rojas",
           "org": "CHC",
-          "level": "TBD",
+          "level": "AA",
           "pos": "SS",
           "person_id": 800473,
           "notes": ""
@@ -151,7 +151,7 @@
         {
           "name": "Jace LaViolette",
           "org": "CLE",
-          "level": "TBD",
+          "level": "AA",
           "pos": "OF",
           "person_id": 702593,
           "notes": ""
@@ -159,7 +159,7 @@
         {
           "name": "Billy Carlson",
           "org": "CHW",
-          "level": "TBD",
+          "level": "A",
           "pos": "SS",
           "person_id": 815814,
           "notes": ""
@@ -167,7 +167,7 @@
         {
           "name": "Xavier Neyens",
           "org": "HOU",
-          "level": "TBD",
+          "level": "A+",
           "pos": "3B",
           "person_id": 815832,
           "notes": ""
@@ -175,7 +175,7 @@
         {
           "name": "Ralphy Velazquez",
           "org": "CLE",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "1B",
           "person_id": 806252,
           "notes": ""
@@ -183,7 +183,7 @@
         {
           "name": "Aiva Arquette",
           "org": "MIA",
-          "level": "TBD",
+          "level": "AA",
           "pos": "SS",
           "person_id": 804109,
           "notes": ""
@@ -191,7 +191,7 @@
         {
           "name": "Jaxon Wiggins",
           "org": "CHC",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "P",
           "person_id": 694393,
           "notes": ""
@@ -205,7 +205,7 @@
         {
           "name": "Aidan Miller",
           "org": "PHI",
-          "level": "TBD",
+          "level": "A",
           "pos": "3B",
           "person_id": 805795,
           "notes": ""
@@ -213,7 +213,7 @@
         {
           "name": "Lazaro Montes",
           "org": "SEA",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "OF",
           "person_id": 703155,
           "notes": ""
@@ -221,7 +221,7 @@
         {
           "name": "George Lombard Jr.",
           "org": "NYY",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "SS",
           "person_id": 806146,
           "notes": ""
@@ -229,7 +229,7 @@
         {
           "name": "Ryan Sloan",
           "org": "SEA",
-          "level": "TBD",
+          "level": "AA",
           "pos": "P",
           "person_id": 815549,
           "notes": ""
@@ -237,7 +237,7 @@
         {
           "name": "Josuar De Jesus Gonzalez",
           "org": "SF",
-          "level": "TBD",
+          "level": "A",
           "pos": "SS",
           "person_id": 829034,
           "notes": ""
@@ -245,7 +245,7 @@
         {
           "name": "Theo Gillen",
           "org": "TB",
-          "level": "TBD",
+          "level": "AA",
           "pos": "OF",
           "person_id": 815394,
           "notes": ""
@@ -253,7 +253,7 @@
         {
           "name": "JoJo Parker",
           "org": "TOR",
-          "level": "TBD",
+          "level": "A+",
           "pos": "SS",
           "person_id": 828098,
           "notes": ""
@@ -261,7 +261,7 @@
         {
           "name": "Brody Hopkins",
           "org": "TB",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "P",
           "person_id": 811315,
           "notes": ""
@@ -269,7 +269,7 @@
         {
           "name": "Tyson Lewis",
           "org": "CIN",
-          "level": "TBD",
+          "level": "A+",
           "pos": "SS",
           "person_id": 815653,
           "notes": ""
@@ -277,7 +277,7 @@
         {
           "name": "Francisco Renteria",
           "org": "PHI",
-          "level": "TBD",
+          "level": "CPX",
           "pos": "OF",
           "person_id": 836353,
           "notes": ""
@@ -285,7 +285,7 @@
         {
           "name": "Kevin Alvarez",
           "org": "HOU",
-          "level": "TBD",
+          "level": "A",
           "pos": "OF",
           "person_id": 829037,
           "notes": ""
@@ -299,7 +299,7 @@
         {
           "name": "Marcus Phillips",
           "org": "BOS",
-          "level": "TBD",
+          "level": "A+",
           "pos": "P",
           "person_id": 815071,
           "notes": ""
@@ -307,7 +307,7 @@
         {
           "name": "Drew Beam",
           "org": "KC",
-          "level": "TBD",
+          "level": "AA",
           "pos": "P",
           "person_id": 701795,
           "notes": ""
@@ -315,7 +315,7 @@
         {
           "name": "Drue Hackenberg",
           "org": "ATL",
-          "level": "TBD",
+          "level": "AA",
           "pos": "P",
           "person_id": 802357,
           "notes": ""
@@ -323,7 +323,7 @@
         {
           "name": "Quinn Mathews",
           "org": "STL",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "P",
           "person_id": 687273,
           "notes": ""
@@ -331,7 +331,7 @@
         {
           "name": "Ricky Tiedemann",
           "org": "TOR",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "P",
           "person_id": 694357,
           "notes": ""
@@ -339,7 +339,7 @@
         {
           "name": "James Tibbs III",
           "org": "SF",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "OF",
           "person_id": 696486,
           "notes": ""
@@ -347,7 +347,7 @@
         {
           "name": "Seaver King",
           "org": "WSH",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "SS/OF",
           "person_id": 814409,
           "notes": ""
@@ -363,7 +363,7 @@
         {
           "name": "Kendry Rojas",
           "org": "MIN",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "P",
           "person_id": 696070,
           "notes": ""
@@ -371,7 +371,7 @@
         {
           "name": "Carlos LaGrange",
           "org": "NYY",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "P",
           "person_id": 801739,
           "notes": ""
@@ -385,7 +385,7 @@
         {
           "name": "Braylon Payne",
           "org": "MIL",
-          "level": "TBD",
+          "level": "AA",
           "pos": "OF",
           "person_id": 815520,
           "notes": ""
@@ -393,7 +393,7 @@
         {
           "name": "Ethan Conrad",
           "org": "CHC",
-          "level": "TBD",
+          "level": "A+",
           "pos": "OF",
           "person_id": 828255,
           "notes": ""
@@ -401,7 +401,7 @@
         {
           "name": "Emmanuel Rodriguez",
           "org": "MIN",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "OF",
           "person_id": 691181,
           "notes": ""
@@ -409,7 +409,7 @@
         {
           "name": "Emil Morales",
           "org": "LAD",
-          "level": "TBD",
+          "level": "A+",
           "pos": "SS",
           "person_id": 815896,
           "notes": ""
@@ -417,7 +417,7 @@
         {
           "name": "Josue Briceno",
           "org": "DET",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "1B",
           "person_id": 800522,
           "notes": ""
@@ -425,7 +425,7 @@
         {
           "name": "Alfredo Duno",
           "org": "CIN",
-          "level": "TBD",
+          "level": "AA",
           "pos": "C",
           "person_id": 806957,
           "notes": ""
@@ -433,7 +433,7 @@
         {
           "name": "Sebastian Walcott",
           "org": "TEX",
-          "level": "TBD",
+          "level": "AA",
           "pos": "SS",
           "person_id": 806964,
           "notes": ""
@@ -441,7 +441,7 @@
         {
           "name": "Thomas White",
           "org": "MIA",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "P",
           "person_id": 806258,
           "notes": ""
@@ -457,7 +457,7 @@
         {
           "name": "Caden Scarborough",
           "org": "TEX",
-          "level": "TBD",
+          "level": "A+",
           "pos": "P",
           "person_id": 807291,
           "notes": ""
@@ -465,7 +465,7 @@
         {
           "name": "Jarlin Susana",
           "org": "WSH",
-          "level": "TBD",
+          "level": "AA",
           "pos": "P",
           "person_id": 703186,
           "notes": ""
@@ -479,7 +479,7 @@
         {
           "name": "Gavin Kilen",
           "org": "SF",
-          "level": "TBD",
+          "level": "AA",
           "pos": "SS",
           "person_id": 702264,
           "notes": ""
@@ -487,7 +487,7 @@
         {
           "name": "Bryce Rainer",
           "org": "DET",
-          "level": "TBD",
+          "level": "A+",
           "pos": "SS",
           "person_id": 800614,
           "notes": ""
@@ -495,7 +495,7 @@
         {
           "name": "Arjun Nimmala",
           "org": "TOR",
-          "level": "TBD",
+          "level": "AA",
           "pos": "SS",
           "person_id": 805796,
           "notes": ""
@@ -511,7 +511,7 @@
         {
           "name": "Jeferson Quero",
           "org": "MIL",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "C",
           "person_id": 691620,
           "notes": ""
@@ -519,7 +519,7 @@
         {
           "name": "Michael Arroyo",
           "org": "SEA",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "2B",
           "person_id": 703197,
           "notes": ""
@@ -527,7 +527,7 @@
         {
           "name": "Jurrangelo Cijntje",
           "org": "STL",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "P",
           "person_id": 701388,
           "notes": ""
@@ -535,7 +535,7 @@
         {
           "name": "Angel Genao",
           "org": "CLE",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "SS",
           "person_id": 694197,
           "notes": ""
@@ -543,7 +543,7 @@
         {
           "name": "Ike Irish",
           "org": "BAL",
-          "level": "TBD",
+          "level": "A+",
           "pos": "1B/OF",
           "person_id": 702610,
           "notes": ""
@@ -551,7 +551,7 @@
         {
           "name": "Ching-Hsien Ko",
           "org": "LAD",
-          "level": "TBD",
+          "level": "A",
           "pos": "OF",
           "person_id": 828667,
           "notes": ""
@@ -565,7 +565,7 @@
         {
           "name": "Aidan Smith",
           "org": "TB",
-          "level": "TBD",
+          "level": "A+",
           "pos": "OF",
           "person_id": 806223,
           "notes": ""
@@ -573,7 +573,7 @@
         {
           "name": "George Klassen",
           "org": "LAA",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "P",
           "person_id": 691946,
           "notes": ""
@@ -581,7 +581,7 @@
         {
           "name": "Luis de Leon",
           "org": "BAL",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "P",
           "person_id": 801725,
           "notes": ""
@@ -589,7 +589,7 @@
         {
           "name": "Luis Perales",
           "org": "WSH",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "P",
           "person_id": 691384,
           "notes": ""
@@ -597,7 +597,7 @@
         {
           "name": "Elmer Rodriguez",
           "org": "NYY",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "P",
           "person_id": 695684,
           "notes": ""
@@ -605,7 +605,7 @@
         {
           "name": "Bo Davidson",
           "org": "SF",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "OF",
           "person_id": 815589,
           "notes": ""
@@ -619,7 +619,7 @@
         {
           "name": "Jacob Reimer",
           "org": "NYM",
-          "level": "TBD",
+          "level": "AA",
           "pos": "3B",
           "person_id": 702544,
           "notes": ""
@@ -627,7 +627,7 @@
         {
           "name": "Elian Pena",
           "org": "NYM",
-          "level": "TBD",
+          "level": "A+",
           "pos": "SS",
           "person_id": 829033,
           "notes": ""
@@ -635,7 +635,7 @@
         {
           "name": "Josue De Paula",
           "org": "LAD",
-          "level": "TBD",
+          "level": "AA",
           "pos": "OF",
           "person_id": 800543,
           "notes": ""
@@ -643,7 +643,7 @@
         {
           "name": "Wandy Asigen",
           "org": "NYM",
-          "level": "TBD",
+          "level": "CPX",
           "pos": "SS",
           "person_id": 836583,
           "notes": ""
@@ -651,7 +651,7 @@
         {
           "name": "Demetrio Crisantes",
           "org": "ARI",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "2B",
           "person_id": 702679,
           "notes": ""
@@ -665,7 +665,7 @@
         {
           "name": "Jhostynxon Garcia",
           "org": "BOS",
-          "level": "TBD",
+          "level": "A+",
           "pos": "OF",
           "person_id": 691373,
           "notes": ""
@@ -673,7 +673,7 @@
         {
           "name": "Jonathon Long",
           "org": "CHC",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "1B",
           "person_id": 675085,
           "notes": ""
@@ -681,7 +681,7 @@
         {
           "name": "Jett Williams",
           "org": "NYM",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "SS",
           "person_id": 702518,
           "notes": ""
@@ -689,7 +689,7 @@
         {
           "name": "Franklin Arias",
           "org": "BOS",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "SS",
           "person_id": 808265,
           "notes": ""
@@ -697,7 +697,7 @@
         {
           "name": "Andrew Fischer",
           "org": "MIL",
-          "level": "TBD",
+          "level": "AA",
           "pos": "1B",
           "person_id": 702652,
           "notes": ""
@@ -711,7 +711,7 @@
         {
           "name": "Ty Johnson",
           "org": "TB",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "P",
           "person_id": 694494,
           "notes": ""
@@ -719,7 +719,7 @@
         {
           "name": "Jhonny Level",
           "org": "SF",
-          "level": "TBD",
+          "level": "A+",
           "pos": "SS",
           "person_id": 815929,
           "notes": ""
@@ -727,7 +727,7 @@
         {
           "name": "Robby Snelling",
           "org": "SD",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "P",
           "person_id": 702281,
           "notes": ""
@@ -735,7 +735,7 @@
         {
           "name": "Aroon Escobar",
           "org": "PHI",
-          "level": "TBD",
+          "level": "AA",
           "pos": "2B",
           "person_id": 800169,
           "notes": ""
@@ -743,7 +743,7 @@
         {
           "name": "Caleb Bonemer",
           "org": "CHW",
-          "level": "TBD",
+          "level": "AA",
           "pos": "SS/3B",
           "person_id": 815352,
           "notes": ""
@@ -751,7 +751,7 @@
         {
           "name": "Cam Collier",
           "org": "CIN",
-          "level": "TBD",
+          "level": "AA",
           "pos": "3B",
           "person_id": 702253,
           "notes": ""
@@ -759,7 +759,7 @@
         {
           "name": "Zyhir Hope",
           "org": "LAD",
-          "level": "TBD",
+          "level": "AA",
           "pos": "OF",
           "person_id": 814307,
           "notes": ""
@@ -767,7 +767,7 @@
         {
           "name": "Ryan Clifford",
           "org": "NYM",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "1B/OF",
           "person_id": 691775,
           "notes": ""
@@ -781,7 +781,7 @@
         {
           "name": "Ethan Salas",
           "org": "SD",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "C",
           "person_id": 806956,
           "notes": ""
@@ -789,7 +789,7 @@
         {
           "name": "Blake Mitchell",
           "org": "KC",
-          "level": "TBD",
+          "level": "A+",
           "pos": "C",
           "person_id": 805810,
           "notes": ""
@@ -797,7 +797,7 @@
         {
           "name": "Brayden Taylor",
           "org": "TB",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "3B",
           "person_id": 694966,
           "notes": ""
@@ -805,7 +805,7 @@
         {
           "name": "Brock Wilken",
           "org": "MIL",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "3B",
           "person_id": 694385,
           "notes": ""
@@ -813,7 +813,7 @@
         {
           "name": "Tommy Troy",
           "org": "ARI",
-          "level": "TBD",
+          "level": "MLB",
           "pos": "SS",
           "person_id": 694371,
           "notes": ""
@@ -821,7 +821,7 @@
         {
           "name": "Jaison Chourio",
           "org": "CLE",
-          "level": "TBD",
+          "level": "AA",
           "pos": "OF",
           "person_id": 702693,
           "notes": ""
@@ -829,7 +829,7 @@
         {
           "name": "Nate George",
           "org": "BAL",
-          "level": "TBD",
+          "level": "A+",
           "pos": "OF",
           "person_id": 825582,
           "notes": ""
@@ -837,7 +837,7 @@
         {
           "name": "Kendry Chourio",
           "org": "KC",
-          "level": "TBD",
+          "level": "A+",
           "pos": "P",
           "person_id": 830402,
           "notes": ""
@@ -845,7 +845,7 @@
         {
           "name": "Felnin Celesten",
           "org": "SEA",
-          "level": "TBD",
+          "level": "AA",
           "pos": "SS",
           "person_id": 806958,
           "notes": ""
@@ -867,7 +867,7 @@
         {
           "name": "Khal Stephen",
           "org": "CLE",
-          "level": "TBD",
+          "level": "AA",
           "pos": "P",
           "person_id": 701590,
           "notes": ""
@@ -875,7 +875,7 @@
         {
           "name": "Trey Gibson",
           "org": "BAL",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "P",
           "person_id": 694346,
           "notes": ""
@@ -883,7 +883,7 @@
         {
           "name": "Zachary Root",
           "org": "LAD",
-          "level": "TBD",
+          "level": "AA",
           "pos": "P",
           "person_id": 702539,
           "notes": ""
@@ -891,7 +891,7 @@
         {
           "name": "Jack Wenninger",
           "org": "NYM",
-          "level": "TBD",
+          "level": "AAA",
           "pos": "P",
           "person_id": 811307,
           "notes": ""

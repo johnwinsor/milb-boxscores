@@ -75,3 +75,39 @@ def test_corrected_stat_line_does_update(conn):
     assert db.upsert_game_logs(conn, [corrected]) == 1
     stored = conn.execute("SELECT h, fetched_at FROM game_log").fetchone()
     assert tuple(stored) == (3, "SECOND")
+
+
+def test_backfill_levels_uses_most_recent_game(conn):
+    """A hand-typed level goes stale on promotion -- the event this tool exists
+    to surface -- so it is derived from the last game played."""
+    from milb.ingest import _backfill_levels
+    from milb.models import FantasyTeam, RosterEntry
+
+    conn.execute("INSERT INTO player (person_id, last_seen_level) VALUES (1, 'AA')")
+    conn.execute("INSERT INTO player (person_id, last_seen_level) VALUES (2, NULL)")
+    conn.execute("INSERT INTO fantasy_team (name, slug) VALUES ('Zebras','zebras')")
+    for pid in (1, 2):
+        conn.execute("INSERT INTO roster_entry (fantasy_team, roster_name, level, person_id) "
+                     "VALUES ('Zebras',?,'TBD',?)", (f"P{pid}", pid))
+
+    teams = [FantasyTeam("Zebras", "zebras", [
+        RosterEntry("Zebras", "P1", level="TBD", person_id=1),
+        RosterEntry("Zebras", "P2", level="A+", person_id=2),   # no games
+    ])]
+    assert _backfill_levels(conn, teams) == 1
+    assert teams[0].players[0].level == "AA"
+    # No game data means nothing to derive from; blanking it would lose real
+    # information about an injured or not-yet-debuted player.
+    assert teams[0].players[1].level == "A+"
+    assert conn.execute(
+        "SELECT level FROM roster_entry WHERE person_id=1").fetchone()[0] == "AA"
+
+
+def test_backfill_is_idempotent(conn):
+    from milb.ingest import _backfill_levels
+    from milb.models import FantasyTeam, RosterEntry
+
+    conn.execute("INSERT INTO player (person_id, last_seen_level) VALUES (1, 'AA')")
+    teams = [FantasyTeam("Zebras", "zebras", [RosterEntry("Zebras", "P1", level="TBD", person_id=1)])]
+    assert _backfill_levels(conn, teams) == 1
+    assert _backfill_levels(conn, teams) == 0   # second run is a no-op

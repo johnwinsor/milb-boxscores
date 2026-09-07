@@ -142,6 +142,9 @@ def main(argv=None):
                        workers=args.workers, debug=args.debug)
         print(f"ingested {r['rows']} rows for {r['resolved']}/{r['players']} players "
               f"in {r['requests']} requests", file=sys.stderr)
+        if r.get("levels"):
+            print(f"updated {r['levels']} roster level(s) from most recent game",
+                  file=sys.stderr)
         for key, msg in r["errors"].items():
             print(f"  unresolved: {key}: {msg}", file=sys.stderr)
         return 0

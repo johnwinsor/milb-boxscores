@@ -245,7 +245,15 @@ function PlayerRow({
       <select value={player.org} onChange={(e) => onChange({ org: e.target.value })} className={input}>
         {ORGS.map((o) => <option key={o}>{o}</option>)}
       </select>
-      <select value={player.level} onChange={(e) => onChange({ level: e.target.value })} className={input}>
+      <select
+        value={player.level}
+        onChange={(e) => onChange({ level: e.target.value })}
+        className={input}
+        title={
+          'Level is set automatically from the player\u2019s most recent game on the next ' +
+          'refresh. Editing it here only sticks for players with no games this season.'
+        }
+      >
         {LEVELS.map((l) => <option key={l}>{l}</option>)}
       </select>
       <input

@@ -127,6 +127,9 @@ def run(season: int, db_path=None, roster_path=None, overrides_path=None,
     conn.commit()
 
     _update_players(conn, api, sorted({e.person_id for e in resolved}))
+    levels_changed = _backfill_levels(conn, teams)
+    if levels_changed:
+        rosters.save(teams, roster_path)
 
     db.finish_run(conn, run_id, _now(), len(entries), len(resolved),
                   upserted, api.requests_made, errors,
@@ -135,7 +138,7 @@ def run(season: int, db_path=None, roster_path=None, overrides_path=None,
     conn.close()
 
     return {"players": len(entries), "resolved": len(resolved), "rows": upserted,
-            "requests": api.requests_made, "errors": errors}
+            "requests": api.requests_made, "levels": levels_changed, "errors": errors}
 
 
 def _write_rosters(conn, teams) -> None:
@@ -194,3 +197,38 @@ def _update_players(conn, api, person_ids) -> None:
                              ORDER BY g.date DESC, g.game_pk DESC LIMIT 1), last_seen_team)
     """)
     conn.commit()
+
+
+def _backfill_levels(conn, teams) -> int:
+    """Set each roster entry's level from the player's most recent game.
+
+    Level is display-only -- the fetch sweeps every sportId regardless -- but a
+    hand-typed value goes stale the moment a prospect is promoted, which is
+    precisely the event this whole tool exists to surface. Deriving it from the
+    last game played means the header self-corrects on a callup, a demotion, or
+    a rehab assignment.
+
+    Players with no games this season keep whatever level was authored: there is
+    nothing to derive from, and blanking it would lose real information about
+    someone who is injured or has not debuted.
+    """
+    derived = {
+        row["person_id"]: row["last_seen_level"]
+        for row in conn.execute(
+            "SELECT person_id, last_seen_level FROM player WHERE last_seen_level IS NOT NULL"
+        )
+    }
+    changed = 0
+    for team in teams:
+        for entry in team.players:
+            level = derived.get(entry.person_id)
+            if level and level != entry.level:
+                entry.level = level
+                changed += 1
+    if changed:
+        conn.executemany(
+            "UPDATE roster_entry SET level = ? WHERE person_id = ?",
+            [(lvl, pid) for pid, lvl in derived.items()],
+        )
+        conn.commit()
+    return changed
