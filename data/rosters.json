@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-07T21:14:31Z",
+  "updated_at": "2026-09-07T23:56:55Z",
   "teams": [
     {
       "name": "Zebras",
@@ -87,14 +87,6 @@
           "notes": ""
         },
         {
-          "name": "Owen Murphy",
-          "org": "ATL",
-          "level": "AAA",
-          "pos": "SP",
-          "person_id": 702566,
-          "notes": ""
-        },
-        {
           "name": "Devin Taylor",
           "org": "ATH",
           "level": "AAA",
@@ -116,6 +108,14 @@
           "level": "AAA",
           "pos": "OF",
           "person_id": 703448,
+          "notes": ""
+        },
+        {
+          "name": "Owen Murphy",
+          "org": "ARI",
+          "level": "TBD",
+          "pos": "OF",
+          "person_id": 702566,
           "notes": ""
         }
       ]
