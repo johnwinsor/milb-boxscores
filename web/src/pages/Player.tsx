@@ -4,6 +4,7 @@ import {
   Bar, BarChart, CartesianGrid, Line, LineChart, ReferenceLine,
   ResponsiveContainer, Tooltip, XAxis, YAxis,
 } from 'recharts'
+import { Scouting } from '../components/Scouting'
 import { StatTable } from '../components/StatTable'
 import { formatStat } from '../lib/format'
 import { ErrorNote, Loading } from '../components/Status'
@@ -72,6 +73,13 @@ export function Player() {
           {data.name !== data.full_name && ` · rostered as ${data.name}`}
         </p>
       </div>
+
+      <Scouting
+        personId={personId}
+        name={data.full_name}
+        group={data.group}
+        initial={data.scouting}
+      />
 
       <section className="rounded-lg border border-neutral-800 bg-neutral-900/40 p-4">
         <h2 className="mb-3 text-sm font-semibold text-neutral-300">Season</h2>

@@ -10,6 +10,7 @@ const TOKEN_KEY = 'milb.github.token'
 const REPO_KEY = 'milb.github.repo'
 const DEFAULT_REPO = 'johnwinsor/milb-boxscores'
 const ROSTER_PATH = 'data/rosters.json'
+const SCOUTING_PATH = 'data/scouting.json'
 
 export const getToken = () => localStorage.getItem(TOKEN_KEY) ?? ''
 export const setToken = (t: string) =>
@@ -69,6 +70,48 @@ export async function saveRoster(doc: RosterDoc, sha: string, message: string) {
   const content = btoa(String.fromCharCode(...new TextEncoder().encode(json)))
   return gh<{ commit: { sha: string; html_url: string } }>(
     `/repos/${getRepo()}/contents/${ROSTER_PATH}`,
+    { method: 'PUT', body: JSON.stringify({ message, content, sha }) },
+  )
+}
+
+// -- scouting -------------------------------------------------------------
+// Same commit-as-save path as rosters, against a different file. Keyed by
+// person_id so a report follows the real player across fantasy trades.
+
+export interface Grade { present?: number; future?: number }
+export interface Report {
+  grades: Record<string, Grade>
+  fv: number | null
+  risk: string | null
+  eta: number | null
+  notes: { date: string; text: string }[]
+  updated_at?: string | null
+}
+export interface ScoutingFile { players: Record<string, Report>; sha: string }
+
+export async function fetchScouting(): Promise<ScoutingFile> {
+  const res = await gh<{ content: string; sha: string }>(
+    `/repos/${getRepo()}/contents/${SCOUTING_PATH}`,
+  )
+  const bytes = Uint8Array.from(atob(res.content.replace(/\n/g, '')), (c) => c.charCodeAt(0))
+  const doc = JSON.parse(new TextDecoder().decode(bytes))
+  return { players: doc.players ?? {}, sha: res.sha }
+}
+
+export async function saveScouting(
+  players: Record<string, Report>,
+  sha: string,
+  message: string,
+) {
+  const json =
+    JSON.stringify(
+      { schema: 1, updated_at: new Date().toISOString().replace(/\.\d+/, ''), players },
+      null,
+      2,
+    ) + '\n'
+  const content = btoa(String.fromCharCode(...new TextEncoder().encode(json)))
+  return gh<{ commit: { sha: string; html_url: string } }>(
+    `/repos/${getRepo()}/contents/${SCOUTING_PATH}`,
     { method: 'PUT', body: JSON.stringify({ message, content, sha }) },
   )
 }

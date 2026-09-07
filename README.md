@@ -77,6 +77,29 @@ resolved the id is written back, so the name lookup never runs for them again.
 When resolution does fail, the Admin page's search-and-pin flow replaces the old
 `--lookup` → edit-the-source → commit loop.
 
+## Scouting reports
+
+Grades and notes live in `data/scouting.json`, written through the same
+commit-as-save path as rosters. Edit them from a player's page (not the roster
+admin) so the stat line that motivated a grade is on screen while you write it.
+
+Reports are keyed by MLBAM `person_id`, not roster name, so they follow the real
+player through fantasy trades and roster churn.
+
+- **Tools** use the standard 20-80 scale, where 50 is major-league average and
+  10 points is about a standard deviation. Each tool takes an optional present
+  grade alongside the future one -- the `45/55` a real report would show, since
+  for a prospect the gap between the two is most of the information.
+- **FV** (Future Value) is the headline number, rendered with its plain-language
+  equivalent (55 = above-average regular, 60 = All-Star, and so on).
+- **Risk** and **ETA** qualify the FV.
+- **Notes** are a dated log rather than one overwritten field, so you can see how
+  your read on a player moved over a season.
+
+Hitters and pitchers get different tool sets (`hit/game power/raw power/run/
+field/arm` versus `fastball/slider/curveball/changeup/command`), chosen from the
+player's roster position.
+
 ## Deploying
 
 1. Make the repo public (GitHub Pages needs this on the free plan).
@@ -104,9 +127,9 @@ backfill from data already on disk, not a re-scrape.
 
 - **A new stat**: add a column in `db.py`, populate it in `derive.py`/`export.py`
   by backfilling from `raw_stat`, and render it in `web/src/`.
-- **Scouting notes and grades**: add `data/scouting.json` and write it through
-  the same Contents API path the roster editor uses, then join on `person_id` at
-  export time.
+- **More scouting fields**: extend the schema in `src/milb/scouting.py`; it is
+  validated on load, so a bad browser write fails the Action rather than landing
+  silently.
 - **Different highlight thresholds**: `web/src/lib/highlight.ts` and
   `src/milb/render.py` hold them, one place each.
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ErrorNote, Loading } from '../components/Status'
+import { gradeClass } from '../lib/grades'
 import { useTeams } from '../lib/useData'
 
 const STATUS_LABEL: Record<string, string> = {
@@ -43,8 +44,16 @@ export function Teams() {
                   </span>
                 )}
                 <span className="ml-auto shrink-0 text-xs text-neutral-500">
-                  {[p.org, p.pos].filter(Boolean).join(' · ')}
+                  {[p.org, p.level, p.pos].filter(Boolean).join(' · ')}
                 </span>
+                {p.fv != null && (
+                  <span
+                    className={`shrink-0 tabular-nums text-xs font-semibold ${gradeClass(p.fv)}`}
+                    title="Future Value"
+                  >
+                    {p.fv}
+                  </span>
+                )}
               </li>
             ))}
           </ul>

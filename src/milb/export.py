@@ -9,7 +9,7 @@ import json
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from . import db, query
+from . import db, query, scouting
 from .config import LEVEL_ORDER, WEB_API_DIR
 from .util import ip_to_outs, outs_to_ip
 
@@ -124,17 +124,22 @@ def run(season: int, db_path=None, out_dir=None, today: date | None = None) -> i
 
     roster = query.roster(conn)
     run_row = db.latest_run(conn)
+    # Scouting is human-authored and lives in git, not SQLite -- it is joined in
+    # here at export time rather than being mirrored into the database.
+    reports = scouting.load()
     available = query.seasons(conn)
 
     teams: dict[str, dict] = {}
     for entry in roster:
         team = teams.setdefault(entry["fantasy_team"], {
             "name": entry["fantasy_team"], "slug": entry["slug"], "players": []})
+        report = reports.get(entry["person_id"]) or {}
         team["players"].append({
             "name": entry["roster_name"], "full_name": entry["full_name"] or entry["roster_name"],
             "org": entry["org"], "level": entry["level"], "pos": entry["pos"],
             "group": entry["group_type"], "person_id": entry["person_id"],
             "status": entry["resolution_status"], "notes": entry["notes"],
+            "fv": report.get("fv"), "risk": report.get("risk"),
         })
 
     _write(out / "meta.json", {
@@ -145,11 +150,22 @@ def run(season: int, db_path=None, out_dir=None, today: date | None = None) -> i
                   for t in teams.values()],
         "players_total": len(roster),
         "players_unresolved": sum(1 for e in roster if not e["person_id"]),
+        "players_scouted": len(reports),
+        "scouting_tools": {"hitting": scouting.HITTER_TOOLS,
+                           "pitching": scouting.PITCHER_TOOLS},
+        "risk_levels": scouting.RISK_LEVELS,
         "last_ingest": dict(run_row) if run_row else None,
     })
     written += 1
 
     _write(out / "teams.json", {"teams": list(teams.values())})
+    written += 1
+
+    _write(out / "scouting.json", {
+        "players": {str(k): v for k, v in reports.items()},
+        "tools": {"hitting": scouting.HITTER_TOOLS, "pitching": scouting.PITCHER_TOOLS},
+        "risk_levels": scouting.RISK_LEVELS,
+    })
     written += 1
 
     for days in WINDOWS:
@@ -183,6 +199,7 @@ def run(season: int, db_path=None, out_dir=None, today: date | None = None) -> i
             "season_total": _aggregate(log, is_p),
             "splits": splits,
             "level_changes": query.level_changes(log),
+            "scouting": reports.get(pid),
             "by_level": {
                 lvl: _aggregate([g for g in log if g["sport_abbr"] == lvl], is_p)
                 for lvl in {g["sport_abbr"] for g in log if g["sport_abbr"]}

@@ -49,6 +49,9 @@ export interface Meta {
   teams: { name: string; slug: string; size: number }[]
   players_total: number
   players_unresolved: number
+  players_scouted: number
+  scouting_tools: { hitting: Record<string, string>; pitching: Record<string, string> }
+  risk_levels: string[]
   last_ingest: {
     finished_at: string | null
     players_resolved: number
@@ -67,6 +70,8 @@ export interface RosterPlayer {
   person_id: number | null
   status: string
   notes: string
+  fv: number | null
+  risk: string | null
 }
 
 export interface TeamsDoc {
@@ -76,6 +81,17 @@ export interface TeamsDoc {
 export interface StatLine {
   G: number
   [key: string]: number | string | null
+}
+
+export interface Grade { present?: number; future?: number }
+
+export interface ScoutingReport {
+  grades: Record<string, Grade>
+  fv: number | null
+  risk: string | null
+  eta: number | null
+  notes: { date: string; text: string }[]
+  updated_at?: string | null
 }
 
 export interface PlayerDetail {
@@ -91,6 +107,7 @@ export interface PlayerDetail {
   splits: Record<string, StatLine>
   level_changes: { date: string; from: string; to: string; direction: 'up' | 'down' }[]
   by_level: Record<string, StatLine>
+  scouting: ScoutingReport | null
 }
 
 export interface PlayerGame {
