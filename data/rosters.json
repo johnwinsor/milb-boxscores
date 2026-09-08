@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-07T23:57:23Z",
+  "updated_at": "2026-09-08T00:02:38Z",
   "teams": [
     {
       "name": "Zebras",
@@ -170,14 +170,6 @@
           "level": "A+",
           "pos": "3B",
           "person_id": 815832,
-          "notes": ""
-        },
-        {
-          "name": "Ralphy Velazquez",
-          "org": "CLE",
-          "level": "AAA",
-          "pos": "1B",
-          "person_id": 806252,
           "notes": ""
         },
         {
@@ -770,6 +762,14 @@
           "level": "AAA",
           "pos": "1B/OF",
           "person_id": 691775,
+          "notes": ""
+        },
+        {
+          "name": "Ralphy Velazquez",
+          "org": "CLE",
+          "level": "AAA",
+          "pos": "1B",
+          "person_id": 806252,
           "notes": ""
         }
       ]
