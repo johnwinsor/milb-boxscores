@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   fetchRoster, getRepo, getToken, lookupPlayer, saveRoster,
   setRepo as persistRepo, setToken as persistToken, triggerRefresh,
@@ -24,12 +24,22 @@ export function Admin() {
   const [doc, setDoc] = useState<RosterDoc | null>(null)
   const [sha, setSha] = useState('')
   const [dirty, setDirty] = useState(false)
+  const dirtyRef = useRef(false)
   const [busy, setBusy] = useState(false)
   const [status, setStatus] = useState<{ kind: 'ok' | 'err'; text: string } | null>(null)
   const [searchFor, setSearchFor] = useState<{ team: number; player: number } | null>(null)
 
-  const load = useCallback(async () => {
+  const load = useCallback(async (opts: { force?: boolean } = {}) => {
     if (!getToken()) return
+    // Reloading overwrites the editor wholesale. The beforeunload guard covers
+    // closing the tab but not this button, so confirm before discarding work.
+    if (dirtyRef.current && !opts.force) {
+      const ok = window.confirm(
+        'You have unsaved roster changes.\n\n' +
+        'Reloading replaces them with the version on GitHub. Continue?',
+      )
+      if (!ok) return
+    }
     setBusy(true)
     try {
       const { doc, sha } = await fetchRoster()
@@ -42,7 +52,9 @@ export function Admin() {
     }
   }, [])
 
-  useEffect(() => { if (token) void load() }, [token, load])
+  useEffect(() => { if (token) void load({ force: true }) }, [token, load])
+
+  useEffect(() => { dirtyRef.current = dirty }, [dirty])
 
   // Guard against losing edits to a stray navigation or tab close.
   useEffect(() => {
@@ -66,7 +78,7 @@ export function Admin() {
       const res = await saveRoster(doc, sha, 'Update rosters from web app')
       setStatus({ kind: 'ok', text: `Committed ${res.commit.sha.slice(0, 7)}. The pipeline will refresh on push.` })
       setDirty(false)
-      await load()
+      await load({ force: true })
     } catch (e) {
       const msg = (e as Error).message
       setStatus({
@@ -110,8 +122,22 @@ export function Admin() {
         <h1 className="text-xl font-semibold text-neutral-100">Roster admin</h1>
         <span className="text-xs text-neutral-500">{repo}</span>
         <div className="ml-auto flex flex-wrap items-center gap-2">
-          <button onClick={load} disabled={busy} className={button}>Reload</button>
-          <button onClick={refresh} disabled={busy} className={button}>Refresh data now</button>
+          <button
+            onClick={() => load()}
+            disabled={busy}
+            className={button}
+            title="Discard local edits and load the current data/rosters.json from GitHub"
+          >
+            Reload from GitHub
+          </button>
+          <button
+            onClick={refresh}
+            disabled={busy}
+            className={button}
+            title="Ask GitHub Actions to re-scrape the MLB API and redeploy. Does not touch rosters -- committing already does this."
+          >
+            Re-scrape stats
+          </button>
           <button
             onClick={save}
             disabled={busy || !dirty}
