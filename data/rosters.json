@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-08T00:11:43Z",
+  "updated_at": "2026-09-08T00:13:43Z",
   "teams": [
     {
       "name": "Zebras",
@@ -157,14 +157,6 @@
           "notes": ""
         },
         {
-          "name": "Billy Carlson",
-          "org": "CHW",
-          "level": "A",
-          "pos": "SS",
-          "person_id": 815814,
-          "notes": ""
-        },
-        {
           "name": "Xavier Neyens",
           "org": "HOU",
           "level": "A+",
@@ -288,6 +280,14 @@
           "level": "A",
           "pos": "OF",
           "person_id": 829037,
+          "notes": ""
+        },
+        {
+          "name": "Billy Carlson",
+          "org": "CHW",
+          "level": "A",
+          "pos": "SS",
+          "person_id": 815814,
           "notes": ""
         }
       ]
