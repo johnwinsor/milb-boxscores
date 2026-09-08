@@ -5,18 +5,15 @@ import {
 } from '../lib/github'
 import type { Candidate, RosterDoc, RosterPlayerDoc } from '../lib/github'
 import { PlayerSearch } from '../components/PlayerSearch'
+import { LEVELS, ORGS, hasIssue, validateRoster } from '../lib/roster'
+import type { Issue } from '../lib/roster'
 
-const ORGS = [
-  'ARI', 'ATH', 'ATL', 'BAL', 'BOS', 'CHC', 'CHW', 'CIN', 'CLE', 'COL', 'DET',
-  'HOU', 'KC', 'LAA', 'LAD', 'MIA', 'MIL', 'MIN', 'NYM', 'NYY', 'PHI', 'PIT',
-  'SD', 'SEA', 'SF', 'STL', 'TB', 'TEX', 'TOR', 'WSH',
-]
-const LEVELS = ['TBD', 'DSL', 'CPX', 'A', 'A+', 'AA', 'AAA', 'MLB']
 
 const input =
   'rounded border border-neutral-800 bg-neutral-950 px-2 py-1 text-sm text-neutral-200 focus:border-blue-600 focus:outline-none'
 const button =
   'rounded-md border border-neutral-700 px-3 py-1.5 text-sm text-neutral-300 hover:bg-neutral-800 disabled:opacity-40 disabled:hover:bg-transparent'
+const invalid = '!border-red-600 bg-red-950/30'
 
 export function Admin() {
   const [token, setTokenState] = useState(getToken())
@@ -73,6 +70,13 @@ export function Admin() {
 
   const save = async () => {
     if (!doc) return
+    // Mirrors the Action's own check. Committing an invalid document would
+    // fail the workflow rather than the UI, and the failure is easy to miss.
+    const blocking = validateRoster(doc)
+    if (blocking.length) {
+      setStatus({ kind: 'err', text: `Fix ${blocking.length} problem(s) before committing.` })
+      return
+    }
     setBusy(true)
     try {
       const res = await saveRoster(doc, sha, 'Update rosters from web app')
@@ -113,6 +117,8 @@ export function Admin() {
                        onToken={(t) => { persistToken(t); setTokenState(t) }} />
   }
 
+  const issues: Issue[] = doc ? validateRoster(doc) : []
+
   const unresolved = doc?.teams.flatMap((t, ti) =>
     t.players.map((p, pi) => ({ ...p, ti, pi, team: t.name })).filter((p) => !p.person_id)) ?? []
 
@@ -140,10 +146,12 @@ export function Admin() {
           </button>
           <button
             onClick={save}
-            disabled={busy || !dirty}
+            disabled={busy || !dirty || issues.length > 0}
+            title={issues.length ? 'Resolve the problems listed above first' : undefined}
             className="rounded-md bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-500 disabled:opacity-40"
           >
-            {dirty ? 'Commit changes' : 'No changes'}
+            {issues.length ? `Fix ${issues.length} problem${issues.length === 1 ? '' : 's'}`
+              : dirty ? 'Commit changes' : 'No changes'}
           </button>
           <button
             onClick={() => { persistToken(''); setTokenState(''); setDoc(null) }}
@@ -162,6 +170,22 @@ export function Admin() {
         }`}>
           {status.text}
         </p>
+      )}
+
+      {issues.length > 0 && (
+        <section className="rounded-lg border border-red-900/60 bg-red-950/20 p-3">
+          <h2 className="mb-2 text-sm font-semibold text-red-400">
+            {issues.length} problem{issues.length === 1 ? '' : 's'} to fix before committing
+          </h2>
+          <ul className="space-y-1 text-sm text-red-300/90">
+            {issues.slice(0, 12).map((i, n) => (
+              <li key={n}>· {i.message}</li>
+            ))}
+            {issues.length > 12 && (
+              <li className="text-red-400/70">…and {issues.length - 12} more</li>
+            )}
+          </ul>
+        </section>
       )}
 
       {unresolved.length > 0 && (
@@ -198,8 +222,13 @@ export function Admin() {
             <span className="text-xs text-neutral-500">{team.players.length}</span>
             <button
               onClick={() => mutate((d) => {
+                // org and pos start empty on purpose. Defaulting them made a
+                // new row look complete while quietly assigning the wrong club
+                // and, worse, making every pitcher a hitter -- pos decides
+                // which game log the pipeline fetches. Empty forces a choice
+                // and the validator catches it.
                 d.teams[ti].players.push({
-                  name: '', org: 'ARI', level: 'TBD', pos: 'OF', person_id: null, notes: '',
+                  name: '', org: '', level: 'TBD', pos: '', person_id: null, notes: '',
                 })
               })}
               className="ml-auto text-sm text-blue-400 hover:text-blue-300"
@@ -215,6 +244,11 @@ export function Admin() {
                 player={p}
                 teams={doc.teams.map((t) => t.name)}
                 currentTeam={ti}
+                bad={{
+                  name: hasIssue(issues, ti, pi, 'name'),
+                  pos: hasIssue(issues, ti, pi, 'pos'),
+                  org: hasIssue(issues, ti, pi, 'org'),
+                }}
                 onChange={(patch) =>
                   mutate((d) => Object.assign(d.teams[ti].players[pi], patch))}
                 onSearch={() => setSearchFor({ team: ti, player: pi })}
@@ -241,11 +275,12 @@ export function Admin() {
 }
 
 function PlayerRow({
-  player, teams, currentTeam, onChange, onSearch, onRemove, onMove,
+  player, teams, currentTeam, bad, onChange, onSearch, onRemove, onMove,
 }: {
   player: RosterPlayerDoc
   teams: string[]
   currentTeam: number
+  bad: { name: boolean; pos: boolean; org: boolean }
   onChange: (patch: Partial<RosterPlayerDoc>) => void
   onSearch: () => void
   onRemove: () => void
@@ -266,9 +301,14 @@ function PlayerRow({
         value={player.name}
         placeholder="Player name"
         onChange={(e) => onChange({ name: e.target.value })}
-        className={`${input} w-48`}
+        className={`${input} w-48 ${bad.name ? invalid : ''}`}
       />
-      <select value={player.org} onChange={(e) => onChange({ org: e.target.value })} className={input}>
+      <select
+        value={player.org}
+        onChange={(e) => onChange({ org: e.target.value })}
+        className={`${input} ${bad.org ? invalid : ''}`}
+      >
+        <option value="">org…</option>
         {ORGS.map((o) => <option key={o}>{o}</option>)}
       </select>
       <select
@@ -286,7 +326,8 @@ function PlayerRow({
         value={player.pos}
         placeholder="POS"
         onChange={(e) => onChange({ pos: e.target.value })}
-        className={`${input} w-20`}
+        className={`${input} w-20 ${bad.pos ? invalid : ''}`}
+        title="SP, RP, P or CP anywhere in this field makes the pipeline pull pitching logs"
       />
 
       <button onClick={onSearch} className="text-xs text-blue-400 hover:text-blue-300">

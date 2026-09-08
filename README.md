@@ -72,6 +72,20 @@ scoped to **only this repository** with **Contents: read and write**. It is kept
 in your browser's localStorage, never committed, and revocable at any time.
 Visitors without a token get a read-only site.
 
+Adding a player needs only a **name**, **org**, and **pos** — the editor blocks a
+commit until all three are set, mirroring the checks the Action runs on load, so
+a bad edit surfaces inline instead of as a failed workflow. Leave **level** at
+`TBD`; it is derived from the player's most recent game.
+
+**pos** is the field that matters: `SP`, `RP`, `P` or `CP` anywhere in it makes
+the pipeline fetch pitching logs, and anything else makes it fetch hitting. Get
+it wrong and the player shows no data.
+
+`person_id` can be left empty. The browser's "find id" button uses the Stats
+API's search endpoint, which misses much of the minors; the pipeline resolves
+against the full league index instead, then writes the id back and commits it.
+Use "find id" only to settle a same-name collision yourself.
+
 `person_id` is a first-class field on each roster entry. Once a player is
 resolved the id is written back, so the name lookup never runs for them again.
 When resolution does fail, the Admin page's search-and-pin flow replaces the old
