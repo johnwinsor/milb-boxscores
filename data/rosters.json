@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-08T00:13:43Z",
+  "updated_at": "2026-09-09T15:03:02Z",
   "teams": [
     {
       "name": "Zebras",
@@ -197,7 +197,7 @@
         {
           "name": "Aidan Miller",
           "org": "PHI",
-          "level": "A",
+          "level": "AA",
           "pos": "3B",
           "person_id": 805795,
           "notes": ""
