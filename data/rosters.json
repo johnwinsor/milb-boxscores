@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-09T15:03:02Z",
+  "updated_at": "2026-09-10T14:55:31Z",
   "teams": [
     {
       "name": "Zebras",
@@ -665,7 +665,7 @@
         {
           "name": "Jhostynxon Garcia",
           "org": "BOS",
-          "level": "A+",
+          "level": "AAA",
           "pos": "OF",
           "person_id": 691373,
           "notes": ""
