@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-10T14:55:31Z",
+  "updated_at": "2026-09-11T14:55:04Z",
   "teams": [
     {
       "name": "Zebras",
@@ -597,7 +597,7 @@
         {
           "name": "Elmer Rodriguez",
           "org": "NYY",
-          "level": "MLB",
+          "level": "AAA",
           "pos": "P",
           "person_id": 695684,
           "notes": ""
