@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-11T14:55:04Z",
+  "updated_at": "2026-09-12T13:55:31Z",
   "teams": [
     {
       "name": "Zebras",
@@ -635,7 +635,7 @@
         {
           "name": "Josue De Paula",
           "org": "LAD",
-          "level": "AA",
+          "level": "MLB",
           "pos": "OF",
           "person_id": 800543,
           "notes": ""
