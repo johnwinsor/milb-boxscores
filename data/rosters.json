@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-13T14:51:13Z",
+  "updated_at": "2026-09-14T16:51:04Z",
   "teams": [
     {
       "name": "Zebras",
@@ -17,7 +17,7 @@
         {
           "name": "Eduardo Quintero",
           "org": "LAD",
-          "level": "A+",
+          "level": "AA",
           "pos": "OF",
           "person_id": 808234,
           "notes": ""
@@ -253,7 +253,7 @@
         {
           "name": "Brody Hopkins",
           "org": "TB",
-          "level": "AAA",
+          "level": "MLB",
           "pos": "P",
           "person_id": 811315,
           "notes": ""
