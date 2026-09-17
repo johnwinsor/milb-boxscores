@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-16T15:21:42Z",
+  "updated_at": "2026-09-17T15:28:32Z",
   "teams": [
     {
       "name": "Zebras",
@@ -821,7 +821,7 @@
         {
           "name": "Tommy Troy",
           "org": "ARI",
-          "level": "MLB",
+          "level": "AAA",
           "pos": "SS",
           "person_id": 694371,
           "notes": ""
