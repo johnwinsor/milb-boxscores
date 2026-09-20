@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-19T14:13:25Z",
+  "updated_at": "2026-09-20T14:37:01Z",
   "teams": [
     {
       "name": "Zebras",
@@ -49,7 +49,7 @@
         {
           "name": "Mike Sirota",
           "org": "LAD",
-          "level": "AA",
+          "level": "AAA",
           "pos": "OF",
           "person_id": 701527,
           "notes": ""
@@ -433,7 +433,7 @@
         {
           "name": "Sebastian Walcott",
           "org": "TEX",
-          "level": "AA",
+          "level": "AAA",
           "pos": "SS",
           "person_id": 806964,
           "notes": ""
