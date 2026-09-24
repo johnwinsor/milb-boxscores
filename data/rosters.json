@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-09-22T15:27:31Z",
+  "updated_at": "2026-09-24T15:45:18Z",
   "teams": [
     {
       "name": "Zebras",
@@ -883,7 +883,7 @@
         {
           "name": "Trey Gibson",
           "org": "BAL",
-          "level": "AAA",
+          "level": "MLB",
           "pos": "P",
           "person_id": 694346,
           "notes": ""
